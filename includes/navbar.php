@@ -10,30 +10,27 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex justify-content-between">
                 <li class="nav-item">
-                    <a class="nav-link navbar-text active" aria-current="page" href="#">Accueil</a>
+                    <a class="nav-link navbar-text active" aria-current="page" href="index.php">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navbar-text Bars" href="#">Bars</a>
+                    <a class="nav-link navbar-text Bars" href="category.php">Bars</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navbar-text Restaurants" href="#">Restaurants</a>
+                    <a class="nav-link navbar-text Restaurants" href="category.php">Restaurants</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navbar-text Patisseries" href="#">Pâtisseries</a>
+                    <a class="nav-link navbar-text Patisseries" href="category.php">Pâtisseries</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navbar-text Parcs" href="#">Parcs</a>
+                    <a class="nav-link navbar-text Parcs" href="category.php">Parcs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navbar-text Recommandations" href="#">Ils vous recommandent:</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link navbar-text Registration" href="register.php">S'inscrire</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link navbar-text Connexion" href="login.php">Se connecter</a>
+                    <a class="nav-link navbar-text Connexion" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Se connecter</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+<?php
+include 'connexion.php';
+?>

@@ -1,7 +1,12 @@
 <?php
 require_once 'controllers/createArticleCtrl.php';
 ?>
-<?php include 'includes/header.php' ?>
+<?php 
+include 'includes/header.php';
+include 'includes/navbar.php'; 
+?>
+ 
+
 <!-- <main class="container mt-3">
     <?php if (!empty($errors)) {
         foreach ($errors as $error) { ?>

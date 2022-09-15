@@ -2,8 +2,10 @@
     require 'controllers/deconnexionCtrl.php';
 ?>
 
-<?php include 'includes/header.php'; ?>
-
+<?php 
+include 'includes/header.php';
+include 'includes/navbar.php' 
+?>
 <main class="container mt-3">
 
     <p>Vous avez bien été déconnecté, merci de votre visite.</p>

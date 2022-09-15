@@ -18,7 +18,7 @@ if(isset($_POST['submit'])) {
 
     // Vérification du nom d'utilisateur
     if(!isset($_POST['username'])) {
-        $errors[] = "Merci de renseigner un nom d'utilisateur";
+        $errors['username'] = "Merci de renseigner un nom d'utilisateur";
     }
     else {
         $user->username = htmlspecialchars($_POST['username']);
@@ -26,7 +26,7 @@ if(isset($_POST['submit'])) {
 
     // Vérification du mot de passe
     if(!isset($_POST['password'])) {
-        $errors[] = "Merci de renseigner un mot de passe";
+        $errors['password'] = "Merci de renseigner un mot de passe";
     }
     else {
         $user->password = $_POST['password'];
@@ -45,6 +45,8 @@ if(isset($_POST['submit'])) {
     }
 
 }
+$errorUsername= isset($errors['username']) ? $errors['username'] : '';
+$errorPassword= isset($errors['password']) ? $errors['password'] : '';
 
 
 ?>
