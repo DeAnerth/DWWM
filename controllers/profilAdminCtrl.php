@@ -29,9 +29,6 @@ if (isset($_GET['id'])) {
 } elseif (isset($_GET['idDelete'])) {
     $id = $_GET['idDelete'];
 }
-if (isset($userSession) && (is_numeric($userSession)) && ($user->isIdUserExist($userSession))) {
-    $readUser = $user->readUser($userSession);
-}
 if (isset($id) && (is_numeric($id)) && ($user->isIdUserExist($id))) {
     $readUserById = $user->readUser($id);
 }
@@ -90,27 +87,25 @@ if (isset($_GET['idDeleteConfirmation'])) {
     header("Location: index.php");
 }
 //****************** */ Function for pagination ONLY FOR users
-$page;
 $offsetPaginationUsersList;
 
-$nbUsers = $user->countPatientsList();
-$pageLimitPaginationUsersList = 10;
-if (isset($_GET['page']) && !empty($_GET['page'])) {
-    $currentPage = htmlspecialchars($_GET['page']);
+$nbUsers = $user->countUsersList();
+$pageLimitPaginationUsersList = 5;
+if (isset($_GET['pageUsers']) && !empty($_GET['pageUsers'])) {
+    $currentPageUsers = htmlspecialchars($_GET['pageUsers']);
 } else {
-    $currentPage = 1;
+    $currentPageUsers = 1;
 }
 //nb de page par rapport au nb de patients
-$nbPage = ceil($nbUsers / $pageLimitPaginationUsersList);
-$offsetPaginationUsersList = ($currentPage * $pageLimitPaginationUsersList) - $pageLimitPaginationUsersList;
+$nbPageUsers = ceil($nbUsers / $pageLimitPaginationUsersList);
+$offsetPaginationUsersList = ($currentPageUsers * $pageLimitPaginationUsersList) - $pageLimitPaginationUsersList;
 $usersListWithLimitAndOffsetForPagination = $user->usersListWithLimitAndOffsetForPagination($offsetPaginationUsersList, $pageLimitPaginationUsersList);
 
 //******************* */ Function for pagination ONLY FOR articles
-$page;
 $offsetPaginationArticlesList;
 
 $nbArticles = $article->countArticlesList();
-$pageLimitPaginationArticlesList = 10;
+$pageLimitPaginationArticlesList = 2;
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = htmlspecialchars($_GET['page']);
 } else {

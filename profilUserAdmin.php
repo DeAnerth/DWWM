@@ -13,7 +13,7 @@ include 'includes/navbar.php';
                 <h5>LISTE DES UTILISATEURS INSCRITS</h5>
                 <?php
     if (isset($usersListWithLimitAndOffsetForPagination)) { ?>
-        <h1 id="pagePatientsList" class="d-flex justify-content-center mt-5 mb-5">LISTE DES UTILISATEURS INSCRITS</h1>
+        <h1 id="pageUsersList" class="d-flex justify-content-center mt-5 mb-5">LISTE DES UTILISATEURS INSCRITS</h1>
         <section>
             <ul class="list-group list-group-horizontal mb-3">
                 <li class="list-group-item col-sm-4">Pseudo</li>
@@ -32,11 +32,11 @@ include 'includes/navbar.php';
         } ?>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="profilUserAdmin.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
-                <?php for($i = 1; $i <= $nbPage; $i++) { ?>
-                <li class="page-item <?= ($currentPage == $i) ? "active" : "" ?>"><a class="page-link" href="profilUserAdmin.php?page=<?= $i ?>"><?= $i ?></a></li>
+                <li class="page-item <?= ($currentPageUsers == 1) ? "disabled" : "" ?>"><a class="page-link" href="profilUserAdmin.php?pageUsers=<?= $currentPageUsers - 1 ?>">Previous</a></li>
+                <?php for($i = 1; $i <= $nbPageUsers; $i++) { ?>
+                <li class="page-item <?= ($currentPageUsers == $i) ? "active" : "" ?>"><a class="page-link" href="profilUserAdmin.php?pageUsers=<?= $i ?>"><?= $i ?></a></li>
                 <?php } ?>
-                <li class="page-item <?= ($currentPage == $nbPage) ? "disabled" : "" ?>"><a class="page-link" href="profilUserAdmin.php?page=<?= $currentPage + 1 ?>">Next</a></li>
+                <li class="page-item <?= ($currentPageUsers == $nbPageUsers) ? "disabled" : "" ?>"><a class="page-link" href="profilUserAdmin.php?pageUsers=<?= $currentPageUsers + 1 ?>">Next</a></li>
             </ul>
         </nav>
         </section>
@@ -44,9 +44,8 @@ include 'includes/navbar.php';
             <a href="./index.php" class="col align-self-center"><button class="btn btn-primary col-sm-7">Retour Index</button></a>
         </div>
         <?php
-    if (isset($articlesListWithLimitAndOffsetForPagination)) { 
-        var_dump($articlesListWithLimitAndOffsetForPagination)?>
-        <h1 id="pagePatientsList" class="d-flex justify-content-center mt-5 mb-5">LISTE DES ARTICLES</h1>
+    if (isset($articlesListWithLimitAndOffsetForPagination)) { ?>
+        <h1 id="pageArticlesList" class="d-flex justify-content-center mt-5 mb-5">LISTE DES ARTICLES</h1>
         <section>
             <ul class="list-group list-group-horizontal mb-3">
                 <li class="list-group-item col-sm-4">Titre</li>
@@ -66,8 +65,8 @@ include 'includes/navbar.php';
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="profilUserAdmin.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
-                <?php for($i = 1; $i <= $nbPage; $i++) { ?>
-                <li class="page-item <?= ($currentPage == $i) ? "active" : "" ?>"><a class="page-link" href="profilUserAdmin.php?page=<?= $i ?>"><?= $i ?></a></li>
+                <?php for($y = 1; $y <= $nbPage; $y++) { ?>
+                <li class="page-item <?= ($currentPage == $y) ? "active" : "" ?>"><a class="page-link" href="profilUserAdmin.php?page=<?= $y ?>"><?= $y ?></a></li>
                 <?php } ?>
                 <li class="page-item <?= ($currentPage == $nbPage) ? "disabled" : "" ?>"><a class="page-link" href="profilUserAdmin.php?page=<?= $currentPage + 1 ?>">Next</a></li>
             </ul>

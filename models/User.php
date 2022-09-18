@@ -238,7 +238,7 @@ class User extends Database
      *@access public 
      *@static
      * */
-    public function countPatientsList(): int
+    public function countUsersList(): int
     {
         $query = 'SELECT COUNT(`id`) AS `number` FROM `user`';
         //on demande à PDO de préparer la requete et de la stocker dans la variable $stmt (statement)
