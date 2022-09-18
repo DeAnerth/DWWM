@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once 'models/Article.php';
 require_once 'models/Category.php';
 require_once 'config/regex.php';
@@ -7,6 +9,8 @@ require_once 'config/regex.php';
 
 <?php
 $errors = [];
+$userSession = $_SESSION['id'];
+
 $article = new Article();
 $category = new Category();
 $readCategoryList = $category->readCategoryList();
@@ -43,11 +47,11 @@ if (isset($_POST['articleSubmit'])) {
     if (empty($errors)) {
         $article->text2 = $_POST['text2'];
         $article->dateCreateArticle = date('Y-m-d');
-        var_dump($article->dateCreateArticle);
+        $article->idAuthor = $userSession ;
         $article->createArticle();
         header("Location: profilUser.php");
     } else {
-        $errors[] = 'Le patient existe déjà';
+        $errors[] = 'Il y a des PROBLEMES';
     }
 }
 

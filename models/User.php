@@ -84,6 +84,27 @@ class User extends Database
         }
         return $result;
     }
+        /**
+     * Method to read a user datas by id in the database
+     * @return class class User
+     * @access public 
+     * @static
+     */
+    public static function getUserByUsername(string $username): ?User
+    {
+        $query = 'SELECT `id`, `username`, `email`, `dateCreateUser` FROM `user` WHERE `username`= :username';
+        $stmt = Database::instantiatePDO()->prepare($query);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $result = $stmt->fetch();
+
+        if ($result == false) {
+            return null;
+        }
+        return $result;
+    }
+
     /**
      * Method to update user datas by id in the database
      * @return 
@@ -101,6 +122,7 @@ class User extends Database
     }
     /**
      * Method to delete user by id in the database
+     * @param int $id 
      * @return 
      * @access public 
      */
@@ -115,6 +137,7 @@ class User extends Database
     /**********  CONTROL METHODS ********************/
     /**
      * method to verify existence of user'id
+     *@param int $id 
      *@return bool true if another user'id is found, false otherwise 
      *@access public 
      */
@@ -134,6 +157,7 @@ class User extends Database
     }
     /**
      * method to verify existence of user'username
+     *@param int $id 
      *@return int if result equal to 0, the user'username don't exist
      *@access public 
      */
@@ -164,6 +188,7 @@ class User extends Database
     /**********  METHOD TO SEARCH BY USERNAME  ********************/
     /**
      * Method to search a username
+     * @param string $searchUsername
      * @return 
      * @access public
      * @static?
@@ -184,4 +209,44 @@ class User extends Database
         }
         return $result;
     }
+    /**********  METHOD TO HAVE PAGINATION USER LIST  ********************/
+
+    /** 
+     * Method need to have two parameters ($pageOffSet, $pageLimit) for configure the pagination
+     * needed to the function of pagination in controller
+     *@param int $pageOffSet 
+     *@param int $pageLimit 
+     *@return 
+     *@access public 
+     *@static
+     * */
+    public function usersListWithLimitAndOffsetForPagination(int $pageOffSet, int $pageLimit)
+    {
+        $query = 'SELECT `id`, `username`, `email`, `dateCreateUser` FROM `user` ORDER BY `username` DESC LIMIT :pageOffSet, :pageLimit ';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':pageLimit', $pageLimit, PDO::PARAM_INT);
+        $stmt->bindParam(':pageOffSet', $pageOffSet, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+        /** 
+     * Method to count thne number of users in database needed to the function of pagination in controller
+     *@param int $pageOffSet 
+     *@param int $pageLimit 
+     *@return 
+     *@access public 
+     *@static
+     * */
+    public function countPatientsList(): int
+    {
+        $query = 'SELECT COUNT(`id`) AS `number` FROM `user`';
+        //on demande à PDO de préparer la requete et de la stocker dans la variable $stmt (statement)
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        //notre objectif retourner le nombre actuel d'utilisateurs
+        return $result->number;
+}
+
 }

@@ -1,16 +1,12 @@
 <?php
 
-session_start();
-
-require 'config/config-model.php';
-
-require 'models/User.php';
+require_once 'config/config-model.php';
+require_once 'models/User.php';
 
 $errors = [];
 $success = false;
 
 $user = new User();
-
 $username = isset($_POST["username"]) ? $_POST["username"] : "";
 
 // Vérification de l'envoi du formulaire
@@ -39,11 +35,11 @@ if(isset($_POST['submit'])) {
         }
         else {
             $_SESSION['username'] = $user->username;
-            header('Location: index.php');
+            $recupIdSessionByName = $user->getUserByUsername($user->username);
+            $_SESSION['id'] = $recupIdSessionByName->id;
+            header('Location: profilUser.php');
         }
-        
     }
-
 }
 $errorUsername= isset($errors['username']) ? $errors['username'] : '';
 $errorPassword= isset($errors['password']) ? $errors['password'] : '';

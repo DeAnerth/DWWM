@@ -7,38 +7,34 @@ require_once 'models/Comment.php';
 require_once 'config/regex.php';
 
 $errors = [];
-$userSession = $_SESSION['id'];
 $user = new User;
 $article = new Article;
 $comment = new Comment;
 
+
 if (isset($userSession) && (is_numeric($userSession)) && ($user->isIdUserExist($userSession))) {
     $readUser = $user->readUser($userSession);
 }
-
 // $readArticleList = $article->readArticlesList();
-$readArticleByUser = $article->getArticlesListByOrderDateAndByIdUser($userSession);
+// $readArticleByUser = $article->getArticlesListByOrderDateAndByIdUser($userSession);
 
-// $readArticleByUser = Article::readArticleByUser($userSession);
-// $readAllUsers = User::readAllUsers();
-// var_dump($readAllUsers);
-$displayUsername = isset($_POST['dataUpdateUser']) ? $_POST['updateUsername'] : $readUser->username;
-$displayEmail = isset($_POST['dataUpdateUser']) ? $_POST['updateEmail'] : $readUser->username;
+$readAllUsers = User::readAllUsers();
+// $displayUsername = isset($_POST['dataUpdateUser']) ? $_POST['updateUsername'] : $readUser->username;
+// $displayEmail = isset($_POST['dataUpdateUser']) ? $_POST['updateEmail'] : $readUser->username;
 
 // fonction pour afficher user avec
 //condition vérification si l'URL envoyée contient bien une ID, une ID entier, une ID existante
-// if (isset($_GET['id'])) {
-//     $id = $_GET['id'];
-// } elseif (isset($_GET['idDelete'])) {
-//     $id = $_GET['idDelete'];
-// } else {
-//     $id = $_GET['idDeleteConfirmation'];
-// }
-
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+} elseif (isset($_GET['idDelete'])) {
+    $id = $_GET['idDelete'];
+}
 if (isset($userSession) && (is_numeric($userSession)) && ($user->isIdUserExist($userSession))) {
     $readUser = $user->readUser($userSession);
 }
-
+if (isset($id) && (is_numeric($id)) && ($user->isIdUserExist($id))) {
+    $readUserById = $user->readUser($id);
+}
 
 // fonction pour modifier user avec controller
 if (isset($_POST['dataUpdateUser'])) {
@@ -70,7 +66,6 @@ if (isset($_POST['dataUpdateUser'])) {
         $errors['updateEmail'] = 'Le champ email doit être rempli';
     }
     if (empty($errors)) {
-        // $user->updateUser($_GET['id']);
         $user->updateUser($userSession);
         header("Location: profilUser.php");
     } else {
@@ -91,7 +86,37 @@ if (isset($_GET['idDeleteConfirmation'])) {
     var_dump($_GET['idDeleteConfirmation']);
     $user->deleteUser($_GET['idDeleteConfirmation']);
     $article->deleteArticle(($_GET['idDeleteConfirmation']));
-    
-    header("Location: index.php");
-    }
 
+    header("Location: index.php");
+}
+//****************** */ Function for pagination ONLY FOR users
+$page;
+$offsetPaginationUsersList;
+
+$nbUsers = $user->countPatientsList();
+$pageLimitPaginationUsersList = 10;
+if (isset($_GET['page']) && !empty($_GET['page'])) {
+    $currentPage = htmlspecialchars($_GET['page']);
+} else {
+    $currentPage = 1;
+}
+//nb de page par rapport au nb de patients
+$nbPage = ceil($nbUsers / $pageLimitPaginationUsersList);
+$offsetPaginationUsersList = ($currentPage * $pageLimitPaginationUsersList) - $pageLimitPaginationUsersList;
+$usersListWithLimitAndOffsetForPagination = $user->usersListWithLimitAndOffsetForPagination($offsetPaginationUsersList, $pageLimitPaginationUsersList);
+
+//******************* */ Function for pagination ONLY FOR articles
+$page;
+$offsetPaginationArticlesList;
+
+$nbArticles = $article->countArticlesList();
+$pageLimitPaginationArticlesList = 10;
+if (isset($_GET['page']) && !empty($_GET['page'])) {
+    $currentPage = htmlspecialchars($_GET['page']);
+} else {
+    $currentPage = 1;
+}
+//nb de page par rapport au nb d'articles
+$nbPage = ceil($nbArticles / $pageLimitPaginationArticlesList);
+$offsetPaginationArticlesList = ($currentPage * $pageLimitPaginationArticlesList) - $pageLimitPaginationArticlesList;
+$articlesListWithLimitAndOffsetForPagination = $article->articlesListWithLimitAndOffsetForPagination($offsetPaginationArticlesList, $pageLimitPaginationArticlesList);

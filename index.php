@@ -2,6 +2,7 @@
 
 ?>
 <?php
+session_start();
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
@@ -113,10 +114,10 @@ include 'includes/navbar.php';
                 </button>
             </div>
         </section>
-        <section>
+        <!-- <section>
             <h2 id="titleAmis">Les recommandations des Amis de Versailles</h2>
             <div class="artFriendsOfTown"></div>
-        </section>
+        </section> -->
         <!--Essai sur JS -->
         <div id="articlesList"></div>
     </main>

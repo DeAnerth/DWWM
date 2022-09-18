@@ -33,7 +33,7 @@ class Category extends Database
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Category');
         $result = $stmt->fetch();
 
         if ($result == false) {

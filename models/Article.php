@@ -58,7 +58,7 @@ class Article extends Database
      */
     public static function readArticleByUser(int $id): ?Article
     {
-        $query = 'SELECT `art`.`id`, `art`.`title`, `art`.`text1`, `art`.`text2`, `art`.`dateCreateArticle`, `art`.`dateUpdateArticle`, `art`.`idAuthor`, `art`.`idCategory`, `user`.`id`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `user` AS `user` INNER JOIN `article` AS `art` ON `art`.`idAuthor` = `user`.`id` WHERE `user`.`id` = :id ORDER BY `art`.`dateCreateArticle` OR `art`.`dateUpdateArticle` DESC LIMIT 5, 5';
+        $query = 'SELECT `art`.`id`, `art`.`title`, `art`.`text1`, `art`.`text2`, `art`.`dateCreateArticle`, `art`.`dateUpdateArticle`, `art`.`idAuthor`, `art`.`idCategory`, `user`.`id`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `article` AS `art` INNER JOIN `user` AS `user` ON `art`.`idAuthor` = `user`.`id` WHERE `art`.`idAuthor` = :id';
         $stmt = Database::instantiatePDO()->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -70,6 +70,16 @@ class Article extends Database
         }
         return $result;
     }
+    public function getArticlesListByOrderDateAndByIdUser(int $id)
+    {
+        $query = 'SELECT `art`.`id`, `art`.`title`, `art`.`text1`, `art`.`text2`, `art`.`dateCreateArticle`, `art`.`dateUpdateArticle`, `art`.`idAuthor`, `art`.`idCategory`, `user`.`id`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `article` AS `art` INNER JOIN `user` AS `user` ON `art`.`idAuthor` = `user`.`id` WHERE `art`.`idAuthor` = :id';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
     /**
      * Method to update article by id in the database
      * @return 
@@ -119,4 +129,44 @@ class Article extends Database
         }
         return true;
     }
+        /**********  METHOD TO HAVE PAGINATION USER LIST  ********************/
+
+    /** 
+     * Method need to have two parameters ($pageOffSet, $pageLimit) for configure the pagination
+     * needed to the function of pagination in controller
+     *@param int $pageOffSet 
+     *@param int $pageLimit 
+     *@return 
+     *@access public 
+     *@static
+     * */
+    public function articlesListWithLimitAndOffsetForPagination(int $pageOffSet, int $pageLimit)
+    {
+        $query = 'SELECT `id`, `title`, `idAuthor`, `dateCreateArticle` FROM `article` ORDER BY `dateCreateArticle` DESC LIMIT :pageOffSet, :pageLimit ';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':pageLimit', $pageLimit, PDO::PARAM_INT);
+        $stmt->bindParam(':pageOffSet', $pageOffSet, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+    /** 
+     * Method to count thne number of users in database needed to the function of pagination in controller
+     *@param int $pageOffSet 
+     *@param int $pageLimit 
+     *@return 
+     *@access public 
+     *@static
+     * */
+    public function countArticlesList(): int
+    {
+        $query = 'SELECT COUNT(`id`) AS `number` FROM `article`';
+        //on demande à PDO de préparer la requete et de la stocker dans la variable $stmt (statement)
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        //notre objectif retourner le nombre actuel d'utilisateurs
+        return $result->number;
+}
+
 }

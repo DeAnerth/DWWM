@@ -5,16 +5,17 @@ require_once 'controllers/profilUserCtrl.php';
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
-<div class="mx-5 mt-5 px-3 bg-light">
+<div class="mx-5 mt-5 px-2 bg-light">
     <h1 id="profilUserTitle" class="d-flex justify-content-center mt-5">VOTRE COMPTE</h1>
-    <p>Bonjour <?= $readUser->username ?>
+    <p>Bonjour <?= $_SESSION['id']; ?>
         Vous êtes connecté sur votre compte
+        <?php var_dump($_SESSION['id']) ?>
     <p>
     <section>
         <div class="d-flex justify-content-center">
-            <div class="card align-items-center mb-5 mt-5 w-50 p-3">
+            <div class="card align-items-center mb-5 mt-5 w-100 p-3">
                 <img src="./assets/images/patient.jpg" class="card-img-top" alt="...">
-                <div class="card-body text-center w-75 p-3">
+                <div class="card-body text-center w-100 p-3">
                     <h5 class="card-title" name="id">Informations</h5>
                 </div>
                 <ul class="list-group list-group-flush border-0 w-100 p-3">
@@ -64,9 +65,8 @@ include 'includes/navbar.php';
             </div>
             <div class="card-body col align-self-center mt-5 w-100">
                 <div class="text-center mb-4">
-                    <a href="profilUser.php?id=<?= $articleByUser->id ?>&value=articleListbyUser" class="card-link btn btn-info col-sm-7" name="updateBtn">LISTE DE VOS ARTICLES</a>
+                    <!-- <a href="profilUser.php?id=<?= $articleByUser->id ?>&value=articleListbyUser" class="card-link btn btn-info col-sm-7" name="updateBtn">LISTE DE VOS ARTICLES</a> -->
                 </div>
-                <?php if (isset($_GET['value'])) { ?>
             <div class="text-center mb-4">
                 <h5>LISTE DES ARTICLES PUBLIES</h5>
                 <?php foreach ($readArticleByUser as $articleByUser) { ?>
@@ -77,10 +77,9 @@ include 'includes/navbar.php';
                     </ul>
                 <?php }; ?>
             </div>
-            <?php } ?>
             <div class="card-body col align-self-center mt-5 w-100">
                 <div class="text-center mb-4">
-                    <a href="profilUser.php?id=<?= $commentByUser->id ?>&value=commentListbyUser" class="card-link btn btn-info col-sm-7" name="updateBtn">LISTE DE VOS COMMENTAIRES</a>
+                    <!-- <a href="profilUser.php?id=<?= $commentByUser->id ?>&value=commentListbyUser" class="card-link btn btn-info col-sm-7" name="updateBtn">LISTE DE VOS COMMENTAIRES</a> -->
                 </div>
                 <?php if (isset($_GET['value'])) { ?>
             <div class="text-center mb-4">
