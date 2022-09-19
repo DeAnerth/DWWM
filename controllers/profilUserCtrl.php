@@ -12,12 +12,18 @@ $user = new User;
 $article = new Article;
 $comment = new Comment;
 
+if (isset($_GET['id']) && (is_numeric($_GET['id'])) && ($user->isIdUserExist($_GET['id']))) {
+    $readUser = $user->readUser($_GET['id']);
+    $readArticlesByUser = $article->getArticlesListByOrderDateAndByIdUser($_GET['id']);
+
+} 
 if (isset($userSession) && (is_numeric($userSession)) && ($user->isIdUserExist($userSession))) {
     $readUser = $user->readUser($userSession);
+    $readArticlesByUser = $article->getArticlesListByOrderDateAndByIdUser($userSession);
+
 }
 
 // $readArticleList = $article->readArticlesList();
-$readArticleByUser = $article->getArticlesListByOrderDateAndByIdUser($userSession);
 
 // $readArticleByUser = Article::readArticleByUser($userSession);
 // $readAllUsers = User::readAllUsers();
@@ -34,10 +40,6 @@ $displayEmail = isset($_POST['dataUpdateUser']) ? $_POST['updateEmail'] : $readU
 // } else {
 //     $id = $_GET['idDeleteConfirmation'];
 // }
-
-if (isset($userSession) && (is_numeric($userSession)) && ($user->isIdUserExist($userSession))) {
-    $readUser = $user->readUser($userSession);
-}
 
 
 // fonction pour modifier user avec controller

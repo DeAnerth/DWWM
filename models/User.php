@@ -39,7 +39,7 @@ class User extends Database
      */
     public function createUser(): void
     {
-        $query = 'INSERT INTO `user` (`username`, `email`, `password`, `dateCreateUser`) VALUES (:username, :email, :password, :dateCreateUser)';
+        $query = 'INSERT INTO `user` (`username`, `email`, `password`, `dateCreateUser`, `role`) VALUES (:username, :email, :password, :dateCreateUser, :role)';
         $stmt = $this->pdo->prepare($query);
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         $this->username = htmlspecialchars($this->username);
@@ -47,6 +47,7 @@ class User extends Database
         $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
         $stmt->bindParam(':password', $this->password, PDO::PARAM_STR);
         $stmt->bindParam(':dateCreateUser', $this->dateCreateUser, PDO::PARAM_STR);
+        $stmt->bindParam(':role', $this->role, PDO::PARAM_INT);
         $stmt->execute();
     }
     /** 
@@ -92,7 +93,7 @@ class User extends Database
      */
     public static function getUserByUsername(string $username): ?User
     {
-        $query = 'SELECT `id`, `username`, `email`, `dateCreateUser` FROM `user` WHERE `username`= :username';
+        $query = 'SELECT `id`, `username`, `email`, `dateCreateUser`, `role` FROM `user` WHERE `username`= :username';
         $stmt = Database::instantiatePDO()->prepare($query);
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();

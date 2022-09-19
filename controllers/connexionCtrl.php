@@ -37,7 +37,12 @@ if(isset($_POST['submit'])) {
             $_SESSION['username'] = $user->username;
             $recupIdSessionByName = $user->getUserByUsername($user->username);
             $_SESSION['id'] = $recupIdSessionByName->id;
-            header('Location: profilUser.php');
+            $_SESSION['role'] = $recupIdSessionByName->role;
+            if ($_SESSION['role'] == 1) {
+                header('Location: profilUserAdmin.php');
+            } else {
+                header('Location: profilUser.php');
+            }
         }
     }
 }

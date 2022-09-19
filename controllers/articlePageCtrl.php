@@ -1,23 +1,15 @@
 <?php
 require_once 'models/User.php';
-require_once 'models/Category.php';
 require_once 'models/Article.php';
-require_once 'models/Comment.php';
 
 ?>
 <?php
 $article = new Article();
-$category = new Category();
-// $readCategoryByArticle = $category->readCategoryByArticle();
+$idArticle = $_GET['idArticle'];
+var_dump($idArticle);
 
-$readUser = $user->readUser('1');//pour voir si cela fonctionne
-$readArticleByUser = Article::readArticleByUser($readUser->id);
-// if (isset($_GET['id'])) {
-//     $id = $_GET['id'];
-if (isset($id) && (is_numeric($id)) && ($user->isIdUserExist($id))) {
-    $readUser = $user->readUser($id);
-} 
-
-if (isset($_GET[''])) {
-
+if (isset($idArticle) && (is_numeric($idArticle)) && ($article->isIdArticleExist($idArticle))) {
+    $readArticle = $article->readArticleByIdArticle($idArticle);
+    var_dump($readArticle);
 }
+

@@ -1,5 +1,5 @@
 <?php
-require 'controllers/connexionCtrl.php';
+require 'controllers/articlePageCtrl.php';
 ?>
 
 <?php
@@ -19,6 +19,8 @@ include 'includes/navbar.php';
     <div id="articleCategory">
         <article>
             <title>
+                <?= $readArticle->title ?>
+
 
             </title>
             <image>

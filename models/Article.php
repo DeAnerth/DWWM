@@ -58,7 +58,7 @@ class Article extends Database
      */
     public static function readArticleByUser(int $id): ?Article
     {
-        $query = 'SELECT `art`.`id`, `art`.`title`, `art`.`text1`, `art`.`text2`, `art`.`dateCreateArticle`, `art`.`dateUpdateArticle`, `art`.`idAuthor`, `art`.`idCategory`, `user`.`id`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `article` AS `art` INNER JOIN `user` AS `user` ON `art`.`idAuthor` = `user`.`id` WHERE `art`.`idAuthor` = :id';
+        $query = 'SELECT `art`.`id` AS `art`.`idArticle`, `art`.`title`, `art`.`text1`, `art`.`text2`, `art`.`dateCreateArticle`, `art`.`dateUpdateArticle`, `art`.`idAuthor`, `art`.`idCategory`, `user`.`id`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `article` AS `art` INNER JOIN `user` AS `user` ON `art`.`idAuthor` = `user`.`id` WHERE `art`.`idAuthor` = :id';
         $stmt = Database::instantiatePDO()->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -70,9 +70,24 @@ class Article extends Database
         }
         return $result;
     }
+    /**
+     * Method to read all articles
+     * @return object
+     * @access public
+     */
+    public function readArticleByIdArticle(int $id):object
+    {
+        $query = 'SELECT `art`.`id`, `art`.`title`, `art`.`text1`, `art`.`text2`, `art`.`dateCreateArticle`, `art`.`dateUpdateArticle`, `art`.`idAuthor`, `art`.`idCategory`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `article` AS `art` INNER JOIN `user` AS `user` ON `art`.`idAuthor` = `user`.`id` WHERE `art`.`id` = :id';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
     public function getArticlesListByOrderDateAndByIdUser(int $id)
     {
-        $query = 'SELECT `art`.`id`, `art`.`title`, `art`.`text1`, `art`.`text2`, `art`.`dateCreateArticle`, `art`.`dateUpdateArticle`, `art`.`idAuthor`, `art`.`idCategory`, `user`.`id`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `article` AS `art` INNER JOIN `user` AS `user` ON `art`.`idAuthor` = `user`.`id` WHERE `art`.`idAuthor` = :id';
+        $query = 'SELECT `art`.`id`, `art`.`title`, `art`.`text1`, `art`.`text2`, `art`.`dateCreateArticle`, `art`.`dateUpdateArticle`, `art`.`idAuthor`, `art`.`idCategory`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `article` AS `art` INNER JOIN `user` AS `user` ON `art`.`idAuthor` = `user`.`id` WHERE `art`.`idAuthor` = :id';
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();

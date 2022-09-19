@@ -63,24 +63,19 @@ include 'includes/navbar.php';
                     <a href="createArticle.php?idAuthor=<?= $readUser->id ?>" type="button " class="card-link btn btn-info col-sm-7 col align-self-center" name="createArticleBtn">Proposer un article</a>
                 </div>
             </div>
-            <div class="card-body col align-self-center mt-5 w-100">
-                <div class="text-center mb-4">
-                    <!-- <a href="profilUser.php?id=<?= $articleByUser->id ?>&value=articleListbyUser" class="card-link btn btn-info col-sm-7" name="updateBtn">LISTE DE VOS ARTICLES</a> -->
-                </div>
             <div class="text-center mb-4">
                 <h5>LISTE DES ARTICLES PUBLIES</h5>
-                <?php foreach ($readArticleByUser as $articleByUser) { ?>
-                    <ul clas="list-group list-group-flush border-0 w-100 p-3">
+                   <div class="list-group list-group-flush border-0 w-100 p-3">
+                    <?php foreach ($readArticlesByUser as $articleByUser) { ?>
+                        <ul clas="list-group list-group-flush border-0 w-100 p-3">
                         <ul class="list-group list-group-horizontal">
-                            <li class="list-group-item col-sm-12"><?= $articleByUser->title ?></li>
+                            <li class="list-group-item col-sm-4"><?= $articleByUser->title ?></li>
+                            <li class="list-group-item col-sm-4"><?= $articleByUser->dateCreateArticle ?></li>
+                            <li class="list-group-item col-sm-4">Identifiant: <a href="articlePage.php?idArticle=<?= $articleByUser->id ?>"><?= $articleByUser->id ?></a></li>
                         </ul>
                     </ul>
-                <?php }; ?>
+                <?php }; ?>                   </div>
             </div>
-            <div class="card-body col align-self-center mt-5 w-100">
-                <div class="text-center mb-4">
-                    <!-- <a href="profilUser.php?id=<?= $commentByUser->id ?>&value=commentListbyUser" class="card-link btn btn-info col-sm-7" name="updateBtn">LISTE DE VOS COMMENTAIRES</a> -->
-                </div>
                 <?php if (isset($_GET['value'])) { ?>
             <div class="text-center mb-4">
                 <h5>LISTE DES COMMENTAIRES PUBLIES</h5>

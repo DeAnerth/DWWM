@@ -58,7 +58,7 @@ include 'includes/navbar.php';
                     <li class="list-group-item col-sm-4"><?= $showArticle->title ?></li>
                     <li class="list-group-item col-sm-4"><?= $showArticle->dateCreateArticle ?></li>
                     <li class="list-group-item col-sm-2"><?= $showArticle->idAuthor ?></li>
-                    <li class="list-group-item col-sm-2">Identifiant: <a href="profilUserAdminInfo.php?id==<?= $showArticle->id ?>"><?= $showArticle->id ?></a></li>
+                    <li class="list-group-item col-sm-2">Identifiant: <a href="articlePage.php?idArticle=<?= $showArticle->id ?>"><?= $showArticle->id ?></a></li>
                 </ul>
         <?php }
         } ?>
