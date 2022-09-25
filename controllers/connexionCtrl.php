@@ -43,6 +43,7 @@ if(isset($_POST['submit'])) {
             } else {
                 header('Location: profilUser.php');
             }
+            var_dump($recupIdSessionByName);
         }
     }
 }

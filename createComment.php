@@ -1,10 +1,9 @@
 <?php
+$page = 'createComment.php';
 require_once 'controllers/createArticleCtrl.php';
 
-?>
-<?php 
-include 'includes/header.php';
-include 'includes/navbar.php' 
+include_once 'includes/header.php';
+include_once 'includes/navbar.php' 
 ?>
 <!-- <main class="container mt-3">
     <?php if (!empty($errors)) {
@@ -19,12 +18,12 @@ include 'includes/navbar.php'
     <div class="mx-5 mt-5 px-3 bg-light"> -->
 <form id="createComment" class="m-5" method="POST" action="">
     <fieldset class="row mb-5">
-        <legend class="mb-5">Commentaire</legend>
+        <legend class="mb-5">Laisser un commentaire</legend>
         <div class="form-label row mb-5">
-            <label id="commentLabel" for="comment" class="form-label col-sm-3"></label>
+            <label id="commentLabel" for="text1" class="form-label col-sm-3"></label>
             <div class="col-sm-9">
-                <textarea class="form-control" name="comment" id="comment" aria-label="Commentaire de l'article" aria-describedby="comment-label" value=""></textarea>
-                <span class="text-danger"><?= $errorComment ?></span>
+                <textarea class="form-control" name="text1" id="comment" aria-label="Commentaire de l'article" aria-describedby="comment-label" value=""></textarea>
+                <span class="text-danger"><?= $errorText1 ?></span>
             </div>
         </div>
     </fieldset>

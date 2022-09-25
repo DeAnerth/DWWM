@@ -1,11 +1,13 @@
 <?php
+require_once 'config/db.php';
+
 class Comment extends Database
 {
     public ?int $id;
     public ?string $text1;
     public ?string $dateCreateComment;
     public ?string $dateUpdateComment;
-    public ?string $idAutor;
+    public ?string $idAuthor;
     public ?string $idArticleOfComment;
 
 
@@ -17,12 +19,12 @@ class Comment extends Database
      */
     public function createComment(): void
     {
-        $query = 'INSERT INTO `comment` (`text1`, `dateCreateComment`, `dateUpdateComment`, `idAutor`, `idArticleOfComment`) VALUES (:text1, :dateCreateComment, :dateUpdateComment, :idAutor, :idArticleOfComment`)';
+        $query = 'INSERT INTO `comment` (`text1`, `dateCreateComment`, `dateUpdateComment`, `idAuthor`, `idArticleOfComment`) VALUES (:text1, :dateCreateComment, :dateUpdateComment, :idAuthor, :idArticleOfComment)';
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':text1', $this->text1, PDO::PARAM_STR);
         $stmt->bindParam(':dateCreateComment', $this->dateCreateComment, PDO::PARAM_STR);
         $stmt->bindParam(':dateUpdateComment', $this->dateUpdateComment, PDO::PARAM_STR);
-        $stmt->bindParam(':idAutor', $this->idAutor, PDO::PARAM_INT);
+        $stmt->bindParam(':idAuthor', $this->idAuthor, PDO::PARAM_INT);
         $stmt->bindParam(':idArticleOfComment', $this->idArticleOfComment, PDO::PARAM_INT);
         $stmt->execute();
     }
@@ -35,7 +37,7 @@ class Comment extends Database
      */
     public static function readCommentByUser(int $id): ?Comment
     {
-        $query = 'SELECT `com`.`text1`, `com`.`dateCreateComment`, `com`.`dateUpdateComment`, `com`.`idAutor`, `com`.`idArticleOfComment`, `user`.`id`, `user`.`username`, `user`.`email`, `user`.`dateCreationUser` FROM `comment` AS `com` INNER JOIN `user` AS `user` ON `com`.`id` = `user`.`id` WHERE `com`.`id` = :id ORDER BY `com`.`dateCreateComment` OR `com`.`dateUpdateComment` DESC LIMIT 5, 5';
+        $query = 'SELECT `com`.`text1`, `com`.`dateCreateComment`, `com`.`dateUpdateComment`, `com`.`idAuthor`, `com`.`idArticleOfComment`, `user`.`id`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `comment` AS `com` INNER JOIN `user` AS `user` ON `com`.`id` = `user`.`id` WHERE `com`.`id` = :id ORDER BY `com`.`dateCreateComment` OR `com`.`dateUpdateComment` DESC LIMIT 5, 5';
         $stmt = Database::instantiatePDO()->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -50,15 +52,15 @@ class Comment extends Database
     /**
      * Method to read one or more comments by article in the database 
      * with limits for pagination
-     * @return class class Comment
+     * @return array
      * @access public 
      * @static
      */
-    public static function readCommentByArticle(int $id): ?Comment
+    public static function readCommentByArticle(int $id): array
     {
-        $query = 'SELECT `com`.`text1`, `com`.`dateCreateComment`, `com`.`dateUpdateComment`, `com`.`idAutor`, `com`.`idArticleOfComment`, `art`.`id`, `art`.`title`, `art`.`text1`, `art`.`text2`, `art`.`dateCreationArticle`, `art`.`dateChangeArticle`, `art`.`idAutor` FROM `comment` AS `com` INNER JOIN `article` AS `art` ON `com`.`id` = `art`.`id` WHERE `com`.`id` = :id ORDER BY `com`.`dateCreateComment` OR `com`.`dateUpdateComment` DESC LIMIT 5, 5';
+        $query = 'SELECT `com`.`text1`, `com`.`dateCreateComment`, `com`.`dateUpdateComment`, `com`.`idAuthor`, `com`.`idArticleOfComment`, `art`.`id` FROM `comment` AS `com` INNER JOIN `article` AS `art` ON `com`.`idArticleOfComment` = `art`.`id` WHERE `com`.`idArticleOfComment` = :id ORDER BY `com`.`dateCreateComment`';
         $stmt = Database::instantiatePDO()->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Comment');
         $result = $stmt->fetchAll();
@@ -66,7 +68,7 @@ class Comment extends Database
         if ($result == false) {
             return null;
         }
-        return $result;
+        return $result; 
     }
     /**
      * Method to update comment datas by id in the database

@@ -1,4 +1,5 @@
 <?php
+$page = 'connexion.php';
 require_once 'controllers/connexionCtrl.php';
 require_once 'controllers/registrationCtrl.php';
 ?>

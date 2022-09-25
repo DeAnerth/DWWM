@@ -16,8 +16,7 @@ if (isset($_GET['id']) && (is_numeric($_GET['id'])) && ($user->isIdUserExist($_G
     $readUser = $user->readUser($_GET['id']);
     $readArticlesByUser = $article->getArticlesListByOrderDateAndByIdUser($_GET['id']);
 
-} 
-if (isset($userSession) && (is_numeric($userSession)) && ($user->isIdUserExist($userSession))) {
+} elseif (isset($userSession) && (is_numeric($userSession)) && ($user->isIdUserExist($userSession))) {
     $readUser = $user->readUser($userSession);
     $readArticlesByUser = $article->getArticlesListByOrderDateAndByIdUser($userSession);
 

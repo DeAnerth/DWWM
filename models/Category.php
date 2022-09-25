@@ -19,6 +19,22 @@ class Category extends Database
         $result = $queryResult->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
+    /** 
+     * Method to read all the existing users in the database
+     * @return array array of users
+     * @access public 
+     * @static
+     * */
+    public static function readCategoryByName(): array
+    {
+        $query = 'SELECT `id`, `name` FROM `category` WHERE `name` = :name';
+        $stmt = Database::instantiatePDO()->prepare($query);
+        $stmt->bindParam(':name', $name, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Category');
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 
 
     /**********  CONTROL METHODS ********************/

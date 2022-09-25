@@ -29,7 +29,7 @@ return $data;
 function convertImage($em) {
     //https://lesdocs.fr/gestion-des-images-avec-php/
     $img = $em;
-    $taille = getimagesize($_FILES['photo']['tmp_name']);
+    $taille = getimagesize($_FILES['photo1']['tmp_name']);
     $largeur = $taille[0];
     $hauteur = $taille[1];
     $largeur_miniature = 600;
@@ -37,9 +37,21 @@ function convertImage($em) {
     $im_miniature = imagecreatetruecolor($largeur_miniature
     , $hauteur_miniature);
     imagecopyresampled($im_miniature, $img, 0, 0, 0, 0, $largeur_miniature, $hauteur_miniature, $largeur, $hauteur);
-    imagejpeg($im_miniature, 'pictures/'.$_FILES['photo']['name'], 90);
-    echo '<img src="pictures/' . $_FILES['photo']['name'] . '">';
+    $uploads_dir = 'assets/img/';
+    $tmp_name = $_FILES['photo1']['tmp_name'];
+    $name = basename($_FILES['photo1']['name']);
+    move_uploaded_file($tmp_name, "$uploads_dir/$name");
+    imagejpeg($im_miniature, 'assets/img/'.$_FILES['photo1']['name'], 90);
+
+    // echo '<img src="assets/img/' . $_FILES['photo1']['name'] . '">';
 }
+
+// $article->photo1 = ($_FILES['photo1']['name']);
+// $uploads_dir = 'assets/img/';
+// $tmp_name = $_FILES['photo1']['tmp_name'];
+// $name = basename($_FILES['photo1']['name']);
+// move_uploaded_file($tmp_name, "$uploads_dir/$name");
+
 //*****  DATE  ********/
 
     /**    Permet de mettre en forme une date enregistrée 

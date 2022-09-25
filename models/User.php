@@ -8,6 +8,8 @@ class User extends Database
     public ?string $password;
     public ?string $username;
     public ?string $dateCreateUser;
+    public ?string $role;
+
 
     /**********  LOGIN TO USER SESSION ********************/
     /**
@@ -87,7 +89,7 @@ class User extends Database
     }
         /**
      * Method to read a user datas by id in the database
-     * @return class class User
+     * @return class  User
      * @access public 
      * @static
      */

@@ -1,10 +1,9 @@
 <?php
-
-?>
-<?php
 session_start();
-include 'includes/header.php';
-include 'includes/navbar.php';
+$page = 'index.php';
+
+include_once 'includes/header.php';
+include_once 'includes/navbar.php';
 ?>
 
 <!-- INDEX PAGE -->
@@ -76,28 +75,28 @@ include 'includes/navbar.php';
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="./assets/img/parc1.jpg" class="d-block w-100" alt="...">
+                        <img src="assets/img/export_francois-1.png" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>First slide labelF</h5>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="./assets/img/parc2.jpg" class="d-block w-100" alt="...">
+                        <img src="assets/img/export_francois-2.png" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Second slide label</h5>
                             <p>Some representative placeholder content for the second slide.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="./assets/img/parc3.jpg" class="d-block w-100" alt="...">
+                        <img src="assets/img/export_francois-3.png" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third slide label</h5>
                             <p>Some representative placeholder content for the third slide.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="./assets/img/parc4.webp" class="d-block w-100" alt="...">
+                        <img src="assets/img/export_francois-5.png" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third slide label</h5>
                             <p>Some representative placeholder content for the third slide.</p>
@@ -114,11 +113,6 @@ include 'includes/navbar.php';
                 </button>
             </div>
         </section>
-        <!-- <section>
-            <h2 id="titleAmis">Les recommandations des Amis de Versailles</h2>
-            <div class="artFriendsOfTown"></div>
-        </section> -->
-        <!--Essai sur JS -->
         <div id="articlesList"></div>
     </main>
 

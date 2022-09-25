@@ -1,9 +1,9 @@
 <?php
+$page = 'createArticle.php';
 require_once 'controllers/createArticleCtrl.php';
-?>
-<?php 
-include 'includes/header.php';
-include 'includes/navbar.php'; 
+
+include_once 'includes/header.php';
+include_once 'includes/navbar.php'; 
 ?>
  
 
@@ -19,7 +19,7 @@ include 'includes/navbar.php';
     ?>
     <div class="mx-5 mt-5 px-3 bg-light"> -->
 <h1 id="formRegistrationTitleUsers" class="d-flex justify-content-center mt-5">CREER VOTRE ARTICLE</h1>
-<form id="createArticle" class="m-5" method="POST" action="">
+<form id="createArticle" class="m-5" method="POST" action="" enctype="multipart/form-data">
     <fieldset class="row mb-5">
         <legend class="mb-5">Article</legend>
         <div class="form-label row mb-5">
@@ -46,6 +46,7 @@ include 'includes/navbar.php';
             <label id="photo1Label" for="photo1" class="form-label col-sm-3">Photo1</label>
             <div class="col-sm-9">
                 <input type="file" class="form-control" name="photo1" id="photo1" aria-label="photo1" aria-describedby="photo1-label">
+                <span class="text-danger"><?= $errorPhoto1 ?></span>
             </div>
         </div>
         <div class="form-label row mb-5">
