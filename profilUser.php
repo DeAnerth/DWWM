@@ -5,12 +5,11 @@ require_once 'controllers/profilUserCtrl.php';
 include_once 'includes/header.php';
 include_once 'includes/navbar.php';
 ?>
-<div class="mx-5 mt-5 px-2 bg-light">
-    <h1 id="profilUserTitle" class="d-flex justify-content-center mt-5">VOTRE COMPTE</h1>
-    <p>Bonjour <?= $_SESSION['id']; ?>
-        Vous êtes connecté sur votre compte
-        <?php var_dump($_SESSION['id']) ?>
+<div class="mx-5 mt-5 px-2 py-3 bg-light">
+    <h1 id="profilUserTitle" class="d-flex justify-content-center mt-5 mb-3">VOTRE COMPTE</h1>
+    <p class="d-flex justify-content-center">Bonjour <?= $_SESSION['username']; ?>. Vous êtes connecté sur votre compte
     <p>
+        <!-- Section of profilUser informations by registration without secure password     -->
     <section>
         <div class="d-flex justify-content-center">
             <div class="card align-items-center mb-5 mt-5 w-100 p-3">
@@ -31,10 +30,11 @@ include_once 'includes/navbar.php';
             </div>
         </div>
     </section>
+    <!-- Section to update profilUser's informations by registration without secure password     -->
     <section>
-        <div class="card-body col align-self-center mt-5 w-100">
+        <div class="card-body col align-self-center mt-4 w-100">
             <div class="text-center mb-4">
-                <a href="profilUser.php?id=<?= $readUser->id ?>&value=updateUser" class="card-link btn btn-info col-sm-7" name="updateBtn">Modifier informations</a>
+                <a href="profilUser.php?id=<?= $readUser->id ?>&value=updateUser" class="card-link btn btn-bkgd-black text-white-yellow-btn col-sm-7" name="updateBtn">Modifier informations</a>
             </div>
             <?php if (isset($_GET['value'])) { ?>
                 <form id="updateUser" class="m-5" method="POST" action="">
@@ -51,31 +51,37 @@ include_once 'includes/navbar.php';
                         </ul>
                     </ul>
                     <div class="vstack align-items-center mx-auto mt-4 mb-5">
-                        <button type="submit" class="btn btn-info col-sm-8 mb-4" name="dataUpdateUser">Modifier</button>
+                        <button type="submit" class="btn btn-bkgd-black text-white-yellow-btn col-sm-8 mb-4" name="dataUpdateUser">Modifier</button>
                     </div>
                 </form>
             <?php } ?>
             <div class="text-center mb-4">
-                <a href="profilUser.php?idDelete=<?= $readUser->id ?>" type="button " class="card-link btn btn-info col-sm-7 col align-self-center" name="deleteBtn">Supprimer le Compte définitivement</a>
+                <a href="profilUser.php?idDelete=<?= $readUser->id ?>" type="button " class="card-link btn btn-bkgd-black text-white-yellow-btn col-sm-7 col align-self-center" name="deleteBtn">Supprimer le Compte définitivement</a>
             </div>
             <div class="text-center mb-4">
-                <a href="createArticle.php?idAuthor=<?= $readUser->id ?>" type="button " class="card-link btn btn-info col-sm-7 col align-self-center" name="createArticleBtn">Proposer un article</a>
+                <a href="createArticle.php?idAuthor=<?= $readUser->id ?>" type="button " class="card-link btn btn-bkgd-black text-white-yellow-btn col-sm-7 col align-self-center" name="createArticleBtn">Proposer un article</a>
             </div>
         </div>
+    </section>
+    <!-- Section to list all articles of profilUser -->
+    <section>
         <div class="text-center mb-4">
             <h5>LISTE DES ARTICLES PUBLIES</h5>
             <div class="list-group list-group-flush border-0 w-100 p-3">
                 <?php foreach ($readArticlesByUser as $articleByUser) { ?>
                     <ul clas="list-group list-group-flush border-0 w-100 p-3">
                         <ul class="list-group list-group-horizontal">
-                            <li class="list-group-item col-sm-4"><?= $articleByUser->title ?></li>
-                            <li class="list-group-item col-sm-4"><?= $articleByUser->dateCreateArticle ?></li>
-                            <li class="list-group-item col-sm-4">Identifiant: <a href="articlePage.php?idArticle=<?= $articleByUser->id ?>"><?= $articleByUser->id ?></a></li>
+                            <li class="list-group-item col-sm-4 d-flex aligns-items-center justify-content-center"><?= $articleByUser->title ?></li>
+                            <li class="list-group-item col-sm-4 d-flex aligns-items-center justify-content-center"><?= $articleByUser->dateCreateArticle ?></li>
+                            <li class="list-group-item col-sm-4 d-flex aligns-items-center justify-content-center"><a href="articlePage.php?idArticle=<?= $articleByUser->id ?>" class="btn btn-bkgd-black text-white-yellow-btn col-sm-6">Visiter</a></li>
                         </ul>
                     </ul>
                 <?php }; ?>
             </div>
         </div>
+    </section>
+    <!-- Section to list all articles of profilUser -->
+    <section>
         <?php if (isset($_GET['value'])) { ?>
             <div class="text-center mb-4">
                 <h5>LISTE DES COMMENTAIRES PUBLIES</h5>
@@ -89,11 +95,9 @@ include_once 'includes/navbar.php';
             </div>
         <?php } ?>
     </section>
-    <div class="text-center mb-4 mt-5">
-        <a href=javascript:history.go(-1) class="col align-self-center"><button class="btn btn-info col-sm-7">Retour</button></a>
+    <div class="text-center mb-4 mt-5 ">
+        <a href=javascript:history.go(-1) class="col d-flex justify-content-end"><button class="btn btn-bkgd-black text-white-yellow-btn btn-back col-sm-2">Retour</button></a>
     </div>
 </div>
-
-
 
 <?php include 'includes/footer.php' ?>

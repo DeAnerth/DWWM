@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+/******************************** FONTS ******************************************/
 
-/********** GENERAL **********/
+@import url('https://fonts.googleapis.com/css2? family= Quicksand:wght@400;500;600 & display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Oswald:wght@400;500;600 & display=swap');
+
+/******************************** GENERAL *****************************************/
 html {
     overflow-x: hidden;
 }
-
-
 body {
     margin: 0;
     padding: 0;
@@ -14,32 +15,51 @@ body {
     box-sizing: border-box;
     max-width: 100%;
     vertical-align: baseline;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Quiksand', sans-serif;
 }
-
 h1,
-h2 {
+h2,
+h3 {
     text-align: center;
+    font-family: 'Oswald';
+    margin: 0;
+    font-weight: 500;
 }
-
 div {
     display: block;
 }
-
-/********** BAR NAV **********/
+a {
+    text-decoration: none;
+}
+.btn-back {
+    bottom: 50px;
+    right: 30px;
+    border: 2px solid #AEA57E;
+  }
+/******************************* BAR NAV ***************************************/
 
 /* Color background NavBar */
 .bg-dark-grey {
     background-color: #222222;
 }
-
-/* Color text NavBar */
+/* Color and font-size text NavBar */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
     color: #AEA57E;
+    font-size: 18px;
 }
-
-/*********** INDEX PAGE ****************/
+.navbar-custom:active .navbar-brand:active,
+.navbar-custom:active .navbar-text:active {
+    color: white;
+}
+.navbar-custom:hover .navbar-brand:hover,
+.navbar-custom:hover .navbar-text:hover {
+    color: white;
+}
+.navbar-toggler-color {
+    color: #AEA57E;
+}
+/****************************** INDEX PAGE **************************************/
 
 /* main structure of index page body */
 #mainBody {
@@ -56,13 +76,14 @@ div {
     margin-top: 10rem;
     text-align: center;
 }
-#imgBanner {
-    width: 100%;
+#indexBanner {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../img/export_francois-9.png);
+    background-repeat: no-repeat;
 }
 
-
-/* contains le red notice under the main photo of the home page */
-
+/* contains red notice under the main photo of the home page */
 #containerNotification {
     display: flex;
     color: red;
@@ -70,14 +91,13 @@ div {
     margin-top: 2rem;
     margin-bottom: 5rem;
 }
-
 #iconNotification {
     width: 2rem;
 }
 
-/* CONTAINER OF RUBRICS LIKE BARS, RESTAURANTS, BOULANGERIES*/
-
+/* CONTAINERS OF RUBRICS IN INDEX.PHP LIKE BARS, RESTAURANTS, BOULANGERIES*/
 /* container structure */
+
 #containerMainRubrics {
     width: 100%;
     display: flex;
@@ -87,12 +107,12 @@ div {
     margin-top: 5rem;
     margin-bottom: 5rem;
 }
-
 .figureMainRubrics {
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid black;
-    width: 90%;
+    border: 1px solid #222;
+    border-radius: 10px;
+    width: 100%;
     margin-top: 2rem;
     margin-bottom: 2rem;
     align-items: center;
@@ -100,10 +120,43 @@ div {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     overflow: hidden;
-
+    background-color: #222;
+    color: white;
+}
+.titleMiddle {
+    padding: 2rem;
+    margin: 0;
+}
+.titleSmall {
+    font-size: 1.5rem;
+}
+.imgMainRubrics {
+    width: 100%;
+}
+.figcaptionMainRubrics {
+    bottom: -33%;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+    color: white;
+}
+.figureMainRubricsLink {
+    cursor: pointer;
+}
+.figcaptionBtn {
+    background-color: #222;
+    border: 2px solid #AEA57E;
+    color: #AEA57E;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    width: 29%;
+    border-radius: 4px;
+    padding: 0.3rem;
 }
 
-/* effets de transition sur les images de la rubrique principale*/
+/* transition effects on main heading images */
 
 .transitionFigureMainRubricsToFigcaptionMainRubrics {
     transition-property: margin-top;
@@ -111,31 +164,14 @@ div {
     transition-timing-function: cubic-bezier(.29, 1.01, 1, -0.68);
 }
 
-.imgMainRubrics {
-    width: 100%;
-}
-
-.figcaptionMainRubrics {
-    bottom: -33%;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    padding: 30px;
-    background-color: black;
-    color: white;
-}
-
-
-
-/* CSS FOR ARTICLES */
-/* ARTICLES INDEX */
+/* CSS FOR ARTICLES IN INDEX.PHP */
+/* ARTICLES CARDS INDEX */
 .containArticle {
     position: relative;
     padding: 0px 0px;
     margin-left: 3rem;
     margin-right: 3rem;
 }
-
 .imageArticle {
     width: 80%;
     margin-top: 5rem;
@@ -143,7 +179,6 @@ div {
     margin-left: auto;
     margin-right: auto;
 }
-
 .textArticle {
     width: 80%;
     margin-top: 5rem;
@@ -151,6 +186,156 @@ div {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+/* CSS FOR ARTICLE PARC IN INDEX.PHP */
+/* CAROUSEL INDEX */
+
+.sectionParcs {
+    background-color: #AEA57E;
+    margin-bottom: 3rem;
+}
+.carouselArrow span {
+    color: black;
+    background-color: black;
+    height: 3rem;
+    width: 3rem;
+}
+.carouselCaptionContainer {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: .5rem;
+}
+
+/*************************** CATEGORY PAGE *************************************/
+
+.figureMainCategoryArticles {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #222;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    overflow: hidden;
+    background-color: #222;
+    color: white;
+}
+.figureMainCategoryArticlesLink {
+    cursor: pointer;
+}
+.titleMiddleCategoryArticles {
+    padding: 2rem;
+    margin: 0;
+}
+.figcaptionMainCategoryArticles {
+    bottom: -33%;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+    color: white;
+}
+.imgMainCategoryArticles {
+    width: 100%;
+}
+.figcaptionBtnCategoryArticles {
+    background-color: #222;
+    border: 2px solid #AEA57E;
+    color: #AEA57E;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    width: 29%;
+    border-radius: 4px;
+    padding: 0.3rem;
+}
+
+/************************************ FORMS ****************************************/
+/* CSS FOR GENERAL FORMS */
+.btn-bkgd-black {
+    background-color: #222;
+}
+.text-white-yellow-btn {
+    color: #AEA57E;
+}
+.text-white-yellow-btn:hover {
+    color: white;
+}
+
+/************************************ PAGINATION ****************************************/
+
+.page-link {
+    color: #222;
+}
+
+.page-item.active .page-link {
+    background-color: #222;
+    border-color: #222;
+    color: #AEA57E;
+
+}
+
+/************************************* FOOTER *************************************/
+/* CSS FOR FOOTER */
+/* general */
+.text-white-yellow {
+    color: #AEA57E;
+}
+/* for section links only */
+.text-white-yellow-links {
+    color: #AEA57E;
+}
+.text-white-yellow-links:hover {
+    color: white;
+}
+
+
+/****************************** MEDIA QUERIES INDEX PAGE **************************/
+/**********************************************************************************/
+@media screen and (min-width: 767px) {
+body{
+    }
+#mainBody {
+    margin: 5%;
+} 
+/* MEDIA QUERIES CSS FOR ARTICLES CARDS INDEX */
+#containerMainRubrics {
+    flex-wrap: nowrap;
+}
+.figureMainRubrics {
+    height: 39rem;
+}
+.figureMainRubricsLink {
+    width: 33.3%;
+    margin-right: 2rem;
+}
+.figureMainRubricsLink:last-child {
+    margin-right: 0;
+}
+
+/* MEDIA QUERIES CSS FOR CAROUSEL INDEX */
+.sectionParcs {
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+}
+.carouselExampleCaptions {
+    width: 50%;
+}
+.carouselWrapper {
+    }
+.carouselItem {
+    }
+.carousel-inner img {
+    margin: auto;
+}
+.carouselCaptionContainer {
+    width: 50%;
+    margin: auto;
+}
 }
 
 
@@ -236,7 +421,6 @@ input:checked~form {
 }
 */
 
-/************ A CHERCHER CE QUE CA PEUT ETRE ***************/
 /* header style
 form header {
     width: 100%;

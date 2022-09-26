@@ -105,7 +105,7 @@ $usersListWithLimitAndOffsetForPagination = $user->usersListWithLimitAndOffsetFo
 $offsetPaginationArticlesList;
 
 $nbArticles = $article->countArticlesList();
-$pageLimitPaginationArticlesList = 2;
+$pageLimitPaginationArticlesList = 5;
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = htmlspecialchars($_GET['page']);
 } else {

@@ -3,9 +3,9 @@ $page = 'createArticle.php';
 require_once 'controllers/createArticleCtrl.php';
 
 include_once 'includes/header.php';
-include_once 'includes/navbar.php'; 
+include_once 'includes/navbar.php';
 ?>
- 
+
 
 <!-- <main class="container mt-3">
     <?php if (!empty($errors)) {
@@ -23,8 +23,8 @@ include_once 'includes/navbar.php';
     <fieldset class="row mb-5">
         <legend class="mb-5">Article</legend>
         <div class="form-label row mb-5">
-                <label for="category" class="form-label col-sm-3">Séléctionner une categorie</label>
-                <div class="col-sm-9">
+            <label for="category" class="form-label col-sm-3">Séléctionner une categorie</label>
+            <div class="col-sm-9">
                 <select class="form-control" name="category" required>
                     <option disabled selected>Selectionnez</option>
                     <?php foreach ($readCategoryList as $category) { ?>
@@ -32,8 +32,8 @@ include_once 'includes/navbar.php';
                     <?php } ?>
                 </select>
                 <span class="text-danger"><?= $errorCategory ?></span>
-                </div>
             </div>
+        </div>
 
         <div class="form-label row mb-5">
             <label id="usernameLabel" for="title" class="form-label col-sm-3">Titre</label>
@@ -75,6 +75,8 @@ include_once 'includes/navbar.php';
         </div>
     </article>
 </form>
+<!-- </div> -->
+<div class="text-center mb-4 mt-5 ">
+    <a href=javascript:history.go(-1) class="col d-flex justify-content-end"><button class="btn btn-bkgd-black text-white-yellow-btn btn-back col-sm-2">Retour</button></a>
 </div>
-
 <?php include 'includes/footer.php' ?>

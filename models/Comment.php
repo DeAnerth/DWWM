@@ -65,9 +65,6 @@ class Comment extends Database
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Comment');
         $result = $stmt->fetchAll();
 
-        if ($result == false) {
-            return null;
-        }
         return $result; 
     }
     /**

@@ -39,12 +39,12 @@ require_once 'controllers/registrationCtrl.php';
                         </div>
                     </div>
                     <div class=" align-items-center mb-5">
-                        <button type="submit" class="btn btn-success col-12" name="submit">Enregistrer</button>
+                        <button type="submit" class="btn btn-bkgd-black text-white-yellow-btn col-12" name="submit">Enregistrer</button>
                     </div>
                 </form>
                 <h3 class="mb-5">S'inscrire</h3>
                 <div>
-                    <button class="btn btn-primary col-12 mb-3" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Créer un compte</button>
+                    <button class="btn btn-bkgd-black text-white-yellow-btn col-12 mb-3" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Créer un compte</button>
                 </div>
             </div>
         </div>
@@ -97,13 +97,13 @@ require_once 'controllers/registrationCtrl.php';
                     </fieldset>
                     <article class="row">
                         <div class="vstack align-items-center col-md-5 mx-auto">
-                            <button type="submit" class="btn btn-primary col-12" name="registrationUserSubmit">Inscrire</button>
+                            <button type="submit" class="btn btn-bkgd-black text-white-yellow-btn col-12" name="registrationUserSubmit">Inscrire</button>
                         </div>
                     </article>
                 </form>
             </div>
             <div class="modal-footer align-items-center mt-3 mb-2">
-                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Retour</button>
+                <button class="btn btn-bkgd-black text-white-yellow-btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Retour</button>
             </div>
         </div>
     </div>

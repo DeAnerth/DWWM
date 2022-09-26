@@ -8,7 +8,7 @@ include_once 'includes/navbar.php';
 
 <!-- INDEX PAGE -->
 <div id=indexBanner>
-    <img id="imgBanner" src="./assets/img/versailles1.jpg">
+    <!--<img id="imgBanner" src="./assets/img/export_francois-9.png" width="100%">-->
 </div>
     <main id="mainBody">
         <h1 id="h1">SORTIR A VERSAILLES</h1>
@@ -31,41 +31,45 @@ include_once 'includes/navbar.php';
                 </span>
             </div>
         </section>
-        <div id="containerMainRubrics">
-            <figure class="figureMainRubrics">
-                <h2>Bars</h2>
-                <img class="imgMainRubrics" src="./assets/img/restoVersailles1.jpg">
-                <figcaption class="figcaptionMainRubrics">
-                    <h2>Plus d'infos</h2>
-                    <p>Plusieurs supers bars à Versailles</p>
-                    <p>Cliquez sur l'image ou sur le bouton pour les découvrir</p>
-                    <button>Cliquez</button>
-                </figcaption>
-            </figure>
-            <figure class="figureMainRubrics">
-                <h2>Restaurants</h2>
-                <img class="imgMainRubrics" src="./assets/img/restoVersailles1.jpg">
-                <figcaption class="figcaptionMainRubrics">
-                    <h2>Plus d'infos</h2>
-                    <p>Plusieurs supers bars à Versailles</p>
-                    <p>Cliquez sur l'image ou su le bouton pour les découvrir</p>
-                    <button>Cliquez</button>
-                </figcaption>
-            </figure>
-            <figure class="figureMainRubrics">
-                <h2>Boulangeries</h2>
-                <img class="imgMainRubrics" src="./assets/img/restoVersailles1.jpg">
-                <figcaption class="figcaptionMainRubrics">
-                    <h2>Plus d'infos</h2>
-                    <p>Plusieurs supers bars à Versailles</p>
-                    <p>Cliquez sur l'image ou su le bouton pour les découvrir</p>
-                    <button>Cliquez</button>
-                </figcaption>
-            </figure>
-        </div>
+        <section id="containerMainRubrics">
+            <a href="categoryPage.php?name=Bars" class="figureMainRubricsLink">
+                <figure class="figureMainRubrics">
+                    <h2 class="titleMiddle">Bars</h2>
+                    <img class="imgMainRubrics" src="./assets/img/export_francois-39.png">
+                    <figcaption class="figcaptionMainRubrics">
+                        <p>Plusieurs supers bars à Versailles</p>
+                        <p>Cliquez sur l'image ou sur le bouton pour les découvrir</p>
+                    </figcaption>
+                    <button class="figcaptionBtn">Cliquez</button>
+                </figure>
+            </a>
+            <a href="categoryPage.php?name=Bars" class="figureMainRubricsLink">
+                <figure class="figureMainRubrics">
+                    <h2 class="titleMiddle">Restaurants</h2>
+                    <img class="imgMainRubrics" src="./assets/img/export_francois-39.png">
+                    <figcaption class="figcaptionMainRubrics">
+                        <p>Plusieurs supers bars à Versailles</p>
+                        <p>Cliquez sur l'image ou su le bouton pour les découvrir</p>
+                    </figcaption>
+                    <button class="figcaptionBtn">Cliquez</button>
+                </figure>
+            </a>
+            <a href="categoryPage.php?name=Bars" class="figureMainRubricsLink">
+                <figure class="figureMainRubrics">
+                    <h2 class="titleMiddle">Boulangeries</h2>
+                    <img class="imgMainRubrics" src="./assets/img/export_francois-39.png">
+                    <figcaption class="figcaptionMainRubrics">
+                        <p>Plusieurs supers bars à Versailles</p>
+                        <p>Cliquez sur l'image ou su le bouton pour les découvrir</p>
+                    </figcaption>
+                    <button class="figcaptionBtn">Cliquez</button>
+                </figure>
+            </a>
         </section>
-        <section>
-            <h2 id="titleParcs">Parcs</h2>
+    </main>
+
+        <section class="sectionParcs">
+            <h2 id="titleParcs" class="titleMiddle">Parcs</h2>
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -73,48 +77,46 @@ include_once 'includes/navbar.php';
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="assets/img/export_francois-1.png" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide labelF</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
+                <div class="carousel-inner carouselWrapper">
+                    <div class="carousel-item carouselItem active">
+                        <img src="assets/img/export_francois-1.png" class="d-block w-75" alt="...">
+                        <div class="carousel-caption carouselCaptionContainer d-none d-md-block">
+                            <h5 class="titleSmall carouselTitle">First slide labelF</h5>
+                            <p class="carouselText">Some representative placeholder content for the first slide.</p>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="assets/img/export_francois-2.png" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
+                    <div class="carousel-item carouselItem">
+                        <img src="assets/img/export_francois-2.png" class="d-block w-75" alt="...">
+                        <div class="carousel-caption carouselCaptionContainer d-none d-md-block">
+                            <h5 class="titleSmall carouselTitle">Second slide label</h5>
+                            <p class="carouselText">Some representative placeholder content for the second slide.</p>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="assets/img/export_francois-3.png" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
+                    <div class="carousel-item carouselItem">
+                        <img src="assets/img/export_francois-3.png" class="d-block w-75" alt="...">
+                        <div class="carousel-caption carouselCaptionContainer d-none d-md-block">
+                            <h5 class="titleSmall carouselTitle">Third slide label</h5>
+                            <p class="carouselText">Some representative placeholder content for the third slide.</p>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="assets/img/export_francois-5.png" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
+                    <div class="carousel-item carouselItem">
+                        <img src="assets/img/export_francois-5.png" class="d-block w-75" alt="...">
+                        <div class="carousel-caption carouselCaptionContainer d-none d-md-block">
+                            <h5 class="titleSmall carouselTitle">Third slide label</h5>
                             <p>Some representative placeholder content for the third slide.</p>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <button class="carousel-control-prev carouselArrow" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <button class="carousel-control-next carouselArrow" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </section>
-        <div id="articlesList"></div>
-    </main>
 
 
     <?php include 'includes/footer.php' ?>
