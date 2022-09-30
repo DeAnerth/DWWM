@@ -21,6 +21,7 @@ class Comment extends Database
     {
         $query = 'INSERT INTO `comment` (`text1`, `dateCreateComment`, `dateUpdateComment`, `idAuthor`, `idArticleOfComment`) VALUES (:text1, :dateCreateComment, :dateUpdateComment, :idAuthor, :idArticleOfComment)';
         $stmt = $this->pdo->prepare($query);
+        $this->text1 = htmlspecialchars($this->text1);
         $stmt->bindParam(':text1', $this->text1, PDO::PARAM_STR);
         $stmt->bindParam(':dateCreateComment', $this->dateCreateComment, PDO::PARAM_STR);
         $stmt->bindParam(':dateUpdateComment', $this->dateUpdateComment, PDO::PARAM_STR);
@@ -76,6 +77,7 @@ class Comment extends Database
     {
         $query = 'UPDATE `comment` SET `text1` = :updateText1, `dateCreateComment` = :updatedateCreateComment, `dateUpdateComment` = :updatedateUpdateComment =  WHERE `id` = :idUpdateComment';
         $stmt = $this->pdo->prepare($query);
+        $this->text1 = htmlspecialchars($this->text1);
         $stmt->bindParam(':idUpdateComment', $id, PDO::PARAM_INT);
         $stmt->bindParam(':updateText1', $this->text1, PDO::PARAM_STR);
         $stmt->bindParam(':updatedateUpdateComment', $this->dateUpdateComment, PDO::PARAM_STR);
@@ -86,13 +88,26 @@ class Comment extends Database
      * @return 
      * @access public 
      */
-    public function deleteArticle($id)
+    public function deleteComment($id)
     {
         $query = 'DELETE FROM `comment`  WHERE `id` = :idDeleteComment';
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':idDeleteComment', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
+    /**
+     * Method to delete all comments of article by idArticleOfComment in the database
+     * @return 
+     * @access public 
+     */
+    public function deleteCommentsOfArticle($id)
+    {
+        $query = 'DELETE FROM `comment`  WHERE `idArticleOfComment` = :idDeleteCommentsOfArticle';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':idDeleteCommentsOfArticle', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
 
     /**********  CONTROL METHODS ********************/
     /**
@@ -127,7 +142,7 @@ class Comment extends Database
         /**
          * Création de la requête SQL
          */
-        $query = 'SELECT `id`, `text1` FROM `comment` WHERE `text1` LIKE :searchComment';
+        $query = 'SELECT `id`, `text1`, `dateCreateComment`, `dateUpdateComment`, FROM `comment` WHERE `text1` LIKE :searchComment';
         $stmt = Database::instantiatePDO()->prepare($query);
         $searchComment = '%' . $searchComment . '%';
         $stmt->bindParam(':searchComment', $searchComment, PDO::PARAM_STR);
@@ -140,4 +155,45 @@ class Comment extends Database
         }
         return $result;
     }
+
+    /**********  METHOD TO HAVE PAGINATION COMMENTS LIST  ********************/
+
+    /** 
+     * Method need to have two parameters ($pageOffSet, $pageLimit) for configure the pagination
+     * needed to the function of pagination in controller
+     *@param int $pageOffSet 
+     *@param int $pageLimit 
+     *@return 
+     *@access public 
+     *@static
+     * */
+    public function commentsListWithLimitAndOffsetForPagination(int $pageOffSet, int $pageLimit)
+    {
+        $query = 'SELECT `id`, `text1`, `dateCreateComment`, `dateUpdateComment`, `idAuthor`, `idArticleOfComment` FROM `comment` ORDER BY `dateCreateComment` DESC LIMIT :pageOffSet, :pageLimit ';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':pageLimit', $pageLimit, PDO::PARAM_INT);
+        $stmt->bindParam(':pageOffSet', $pageOffSet, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+        /** 
+     * Method to count the number of comments in database needed to the function of pagination in controller
+     *@param int $pageOffSet 
+     *@param int $pageLimit 
+     *@return 
+     *@access public 
+     *@static
+     * */
+    public function countCommentsList(): int
+    {
+        $query = 'SELECT COUNT(`id`) AS `number` FROM `comment`';
+        //on demande à PDO de préparer la requete et de la stocker dans la variable $stmt (statement)
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        //notre objectif retourner le nombre actuel de commentaires
+        return $result->number;
+}
+
 }

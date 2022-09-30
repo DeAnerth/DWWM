@@ -9,7 +9,7 @@ include_once 'includes/navbar.php'
 
     <p>Vous avez bien été déconnecté, merci de votre visite.</p>
 
-    <a class="Connexion" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Se connecter</a>
+    <a class="Connexion" data-bs-toggle="modal" href="#modalConnexion" role="button">Se connecter</a>
 
 </main>
 

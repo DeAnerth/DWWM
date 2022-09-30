@@ -7,9 +7,17 @@ require_once 'models/Article.php';
 
 ?>
 <?php
-$article = new Article();
-$idArticle = $_GET['idArticle'];
+if (isset($_GET['idArticle'])) {
+    $idArticle = $_GET['idArticle'];
+} elseif (isset($_GET['idUpdateArticle'])) {
+    $idArticle = $_GET['idUpdateArticle'];
+} else {
+    $idArticle = $_GET['idArticleDelete'];
+} 
 
-if (isset($_GET['idArticle']) && (is_numeric($_GET['idArticle'])) && ($article->isIdArticleExist($_GET['idArticle']))) {
-    $readArticle = $article->readArticleByIdArticle($_GET['idArticle']);
+$article = new Article();
+
+if (isset($idArticle) && (is_numeric($idArticle)) && ($article->isIdArticleExist($idArticle))) {
+    $readArticle = $article->readArticleByIdArticle($idArticle);
 }
+var_dump($article);

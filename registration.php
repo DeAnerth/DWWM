@@ -34,21 +34,21 @@ include_once 'includes/navbar.php';
             <div class="form-label row mb-5">
                 <label id="emailLabel" for="email" class="form-label col-sm-3">Adresse courriel</label>
                 <div class="col-sm-9">
-                    <input type="email" class="form-control" name="email" id="email" aria-label="Email" aria-describedby="email-label" value="<?= $mail ?>" placeholder="name@example.com">
+                    <input type="email" class="form-control" name="email" id="email" aria-label="Email" aria-describedby="emailLabel" value="<?= $mail ?>" placeholder="name@example.com">
                     <span class="text-danger"><?= $errorEmail ?></span>
                 </div>
             </div>
             <div class="form-label row mb-5">
                 <label id="passwordLabel" for="password" class="form-label col-sm-3">Mot de Passe</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" name="password" id="password" aria-label="Mot de passe" aria-describedby="password-label" value="<?= $password ?>">
+                    <input type="password" class="form-control" name="password" id="password" aria-label="Mot de passe" aria-describedby="passwordLabel" value="<?= $password ?>">
                     <span class="text-danger"><?= $errorPassword ?></span>
                 </div>
             </div>
             <div class="form-label row mb-5">
                 <label id="passwordConfirmationLabel" for="passwordConfirmation" class="form-label col-sm-3">Confirmer votre Mot de Passe</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" aria-label="Confirmation Mot de Passe" aria-describedby="passwordConfirmation-label" value="<?= $passwordConfirmation ?>">
+                    <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" aria-label="Confirmation Mot de Passe" aria-describedby="passwordConfirmationLabel" value="<?= $passwordConfirmation ?>">
                     <span class="text-danger"><?= $errorPasswordConfirmation ?></span>
                 </div>
             </div>

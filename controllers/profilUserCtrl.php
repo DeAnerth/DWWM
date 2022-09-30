@@ -22,24 +22,8 @@ if (isset($_GET['id']) && (is_numeric($_GET['id'])) && ($user->isIdUserExist($_G
 
 }
 
-// $readArticleList = $article->readArticlesList();
-
-// $readArticleByUser = Article::readArticleByUser($userSession);
-// $readAllUsers = User::readAllUsers();
-// var_dump($readAllUsers);
 $displayUsername = isset($_POST['dataUpdateUser']) ? $_POST['updateUsername'] : $readUser->username;
 $displayEmail = isset($_POST['dataUpdateUser']) ? $_POST['updateEmail'] : $readUser->username;
-
-// fonction pour afficher user avec
-//condition vérification si l'URL envoyée contient bien une ID, une ID entier, une ID existante
-// if (isset($_GET['id'])) {
-//     $id = $_GET['id'];
-// } elseif (isset($_GET['idDelete'])) {
-//     $id = $_GET['idDelete'];
-// } else {
-//     $id = $_GET['idDeleteConfirmation'];
-// }
-
 
 // fonction pour modifier user avec controller
 if (isset($_POST['dataUpdateUser'])) {
@@ -96,3 +80,12 @@ if (isset($_GET['idDeleteConfirmation'])) {
     header("Location: index.php");
     }
 
+// fonction pour afficher user avec
+//condition vérification si l'URL envoyée contient bien une ID, une ID entier, une ID existante
+// if (isset($_GET['id'])) {
+//     $id = $_GET['id'];
+// } elseif (isset($_GET['idDelete'])) {
+//     $id = $_GET['idDelete'];
+// } else {
+//     $id = $_GET['idDeleteConfirmation'];
+// }

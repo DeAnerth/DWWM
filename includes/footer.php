@@ -14,7 +14,7 @@
     <section class="">
       <p class="d-flex justify-content-center align-items-center">
         <span class="me-3">Inscrivez vous pour pouvoir proposer des articles, poster des commentaires</span>
-        <a class="btn btn-outline-light Connexion text-white-yellow" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Inscrivez-vous</a>
+        <a class="btn btn-outline-light Connexion text-white-yellow" data-bs-toggle="modal" href="#modalConnexion" role="button">Inscrivez-vous</a>
       </p>
     </section>
     <!-- Section: CTA -->

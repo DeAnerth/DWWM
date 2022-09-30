@@ -4,6 +4,15 @@
 @import url('https://fonts.googleapis.com/css2? family= Oswald:wght@400;500;600 & display=swap');
 
 /******************************** GENERAL *****************************************/
+:root {
+    --black-color: #222222;
+    --gold-color: #AEA57E;
+  }
+
+* {
+    overflow-wrap: break-word;
+}
+
 html {
     overflow-x: hidden;
 }
@@ -31,21 +40,26 @@ div {
 a {
     text-decoration: none;
 }
+
+.menuContainer {
+    padding-top: 0;
+    padding-bottom: 0;
+}
 .btn-back {
     bottom: 50px;
     right: 30px;
-    border: 2px solid #AEA57E;
+    border: 2px solid var(--gold-color);
   }
 /******************************* BAR NAV ***************************************/
 
 /* Color background NavBar */
 .bg-dark-grey {
-    background-color: #222222;
+    background-color: var(--black-color);
 }
 /* Color and font-size text NavBar */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
-    color: #AEA57E;
+    color: var(--gold-color);
     font-size: 18px;
 }
 .navbar-custom:active .navbar-brand:active,
@@ -57,7 +71,7 @@ a {
     color: white;
 }
 .navbar-toggler-color {
-    color: #AEA57E;
+    color: var(--gold-color);
 }
 /****************************** INDEX PAGE **************************************/
 
@@ -72,14 +86,10 @@ a {
     margin-top: 2rem;
     text-align: center;
 }
-#titleParcs #titleAmis {
-    margin-top: 10rem;
-    text-align: center;
-}
 #indexBanner {
     width: 100vw;
-    height: 100vh;
-    background-image: url(../img/export_francois-9.png);
+    height: 100%;
+    /*background-image: url(../img/parc_piece_deau_02.jpg);*/
     background-repeat: no-repeat;
 }
 
@@ -110,7 +120,7 @@ a {
 .figureMainRubrics {
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid #222;
+    border: 1px solid var(--black-color);
     border-radius: 10px;
     width: 100%;
     margin-top: 2rem;
@@ -120,18 +130,23 @@ a {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     overflow: hidden;
-    background-color: #222;
+    background-color: var(--black-color);
     color: white;
 }
 .titleMiddle {
+    text-align: center;
     padding: 2rem;
     margin: 0;
 }
 .titleSmall {
     font-size: 1.5rem;
 }
+.figureImgContainer {
+    height: 50%;
+}
 .imgMainRubrics {
-    width: 100%;
+    height: 100%;
+    width: auto;
 }
 .figcaptionMainRubrics {
     bottom: -33%;
@@ -146,8 +161,8 @@ a {
 }
 .figcaptionBtn {
     background-color: #222;
-    border: 2px solid #AEA57E;
-    color: #AEA57E;
+    border: 2px solid var(--gold-color);
+    color: var(--gold-color);
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
     margin-bottom: 2rem;
@@ -162,6 +177,10 @@ a {
     transition-property: margin-top;
     transition-duration: 2s;
     transition-timing-function: cubic-bezier(.29, 1.01, 1, -0.68);
+}
+
+.sliderImg {
+    margin: auto;
 }
 
 /* CSS FOR ARTICLES IN INDEX.PHP */
@@ -192,7 +211,7 @@ a {
 /* CAROUSEL INDEX */
 
 .sectionParcs {
-    background-color: #AEA57E;
+    background-color: var(--gold-color);
     margin-bottom: 3rem;
 }
 .carouselArrow span {
@@ -207,11 +226,18 @@ a {
 }
 
 /*************************** CATEGORY PAGE *************************************/
-
+.categorieArticle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.categorieArticleContainer {
+    width: 100%;
+}
 .figureMainCategoryArticles {
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid #222;
+    border: 1px solid var(--black-color);
     border-radius: 10px;
     width: 100%;
     margin-top: 2rem;
@@ -221,7 +247,7 @@ a {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     overflow: hidden;
-    background-color: #222;
+    background-color: var(--black-color);
     color: white;
 }
 .figureMainCategoryArticlesLink {
@@ -241,11 +267,12 @@ a {
 }
 .imgMainCategoryArticles {
     width: 100%;
+
 }
 .figcaptionBtnCategoryArticles {
-    background-color: #222;
-    border: 2px solid #AEA57E;
-    color: #AEA57E;
+    background-color: var(--black-color);
+    border: 2px solid var(--gold-color);
+    color: var(--gold-color);
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
     margin-bottom: 2rem;
@@ -257,25 +284,34 @@ a {
 /************************************ FORMS ****************************************/
 /* CSS FOR GENERAL FORMS */
 .btn-bkgd-black {
-    background-color: #222;
+    background-color: var(--black-color);
 }
 .text-white-yellow-btn {
-    color: #AEA57E;
+    color: var(--gold-color);
 }
 .text-white-yellow-btn:hover {
     color: white;
+}
+.updateArticleClick {
+    display: none;
+}
+.createCommentClick {
+    display: none;
+}
+.updateProfilUserClick {
+    display: none;
 }
 
 /************************************ PAGINATION ****************************************/
 
 .page-link {
-    color: #222;
+    color: var(--black-color);
 }
 
 .page-item.active .page-link {
-    background-color: #222;
-    border-color: #222;
-    color: #AEA57E;
+    background-color: var(--black-color);
+    border-color: var(--black-color);
+    color: var(--gold-color);
 
 }
 
@@ -283,11 +319,11 @@ a {
 /* CSS FOR FOOTER */
 /* general */
 .text-white-yellow {
-    color: #AEA57E;
+    color: var(--gold-color);
 }
 /* for section links only */
 .text-white-yellow-links {
-    color: #AEA57E;
+    color: var(--gold-color);
 }
 .text-white-yellow-links:hover {
     color: white;
@@ -335,6 +371,9 @@ body{
 .carouselCaptionContainer {
     width: 50%;
     margin: auto;
+}
+.categorieArticleContainer {
+    width: 50%;
 }
 }
 

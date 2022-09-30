@@ -15,15 +15,11 @@ $comment = new Comment;
 if (isset($userSession) && (is_numeric($userSession)) && ($user->isIdUserExist($userSession))) {
     $readUser = $user->readUser($userSession);
 }
-// $readArticleList = $article->readArticlesList();
-// $readArticleByUser = $article->getArticlesListByOrderDateAndByIdUser($userSession);
 
 $readAllUsers = User::readAllUsers();
-// $displayUsername = isset($_POST['dataUpdateUser']) ? $_POST['updateUsername'] : $readUser->username;
-// $displayEmail = isset($_POST['dataUpdateUser']) ? $_POST['updateEmail'] : $readUser->username;
-
 // fonction pour afficher user avec
 //condition vérification si l'URL envoyée contient bien une ID, une ID entier, une ID existante
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 } elseif (isset($_GET['idDelete'])) {
@@ -115,3 +111,18 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 $nbPage = ceil($nbArticles / $pageLimitPaginationArticlesList);
 $offsetPaginationArticlesList = ($currentPage * $pageLimitPaginationArticlesList) - $pageLimitPaginationArticlesList;
 $articlesListWithLimitAndOffsetForPagination = $article->articlesListWithLimitAndOffsetForPagination($offsetPaginationArticlesList, $pageLimitPaginationArticlesList);
+
+//****************** */ Function for pagination ONLY FOR comments
+$offsetPaginationCommentsList;
+
+$nbComments = $comment->countCommentsList();
+$pageLimitPaginationCommentsList = 5;
+if (isset($_GET['pageUsers']) && !empty($_GET['pageUsers'])) {
+    $currentPageComments = htmlspecialchars($_GET['pageUsers']);
+} else {
+    $currentPageComments = 1;
+}
+//nb de page par rapport au nb de patients
+$nbCommentsUsers = ceil($nbComments / $pageLimitPaginationCommentsList);
+$offsetPaginationCommentsList = ($currentPageComments * $pageLimitPaginationCommentsList) - $pageLimitPaginationCommentsList;
+$commentsListWithLimitAndOffsetForPagination = $comment->commentsListWithLimitAndOffsetForPagination($offsetPaginationCommentsList, $pageLimitPaginationCommentsList);
