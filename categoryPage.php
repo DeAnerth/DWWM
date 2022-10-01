@@ -11,7 +11,8 @@ include_once 'includes/navbar.php';
     <h2 class="titleMiddle">Sortir à Versailles, bars, restaurants, boulangeries.</h2>
     <section class="categorieArticle">
         <?php foreach ($readArticleByNameCategory as $keyarticle => $article) { 
-            var_dump($article)?>
+                        var_dump($article->articleId)
+            ?>
             <article class="categorieArticleContainer" aria-label="article sur <?= $article->title ?>">
                 <a href="articlePage.php?idArticle=<?= $article->articleId ?>" class="figureMainCategoryArticlesLink" >
                     <figure class="figureMainCategoryArticles">

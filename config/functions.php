@@ -70,7 +70,6 @@ function convertImage2($em)
 }
 function convertImage3($photo)
 {
-    var_dump($photo);
     //https://lesdocs.fr/gestion-des-images-avec-php/
     $uploads_dir = 'assets/img/';
     $tmp_name = $photo['tmp_name'];

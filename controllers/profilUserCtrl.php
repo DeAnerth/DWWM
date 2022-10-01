@@ -75,17 +75,9 @@ if (isset($_GET['idDelete']) && (is_numeric($_GET['idDelete'])) && ($user->isIdU
 if (isset($_GET['idDeleteConfirmation'])) {
     var_dump($_GET['idDeleteConfirmation']);
     $user->deleteUser($_GET['idDeleteConfirmation']);
-    $article->deleteArticle(($_GET['idDeleteConfirmation']));
+    $article->deleteAllArticles(($_GET['idDeleteConfirmation']));
+    $comment->deleteCommentsOfArticle($idArticleDelete);
     
     header("Location: index.php");
     }
 
-// fonction pour afficher user avec
-//condition vérification si l'URL envoyée contient bien une ID, une ID entier, une ID existante
-// if (isset($_GET['id'])) {
-//     $id = $_GET['id'];
-// } elseif (isset($_GET['idDelete'])) {
-//     $id = $_GET['idDelete'];
-// } else {
-//     $id = $_GET['idDeleteConfirmation'];
-// }

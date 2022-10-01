@@ -86,7 +86,7 @@ class Article extends Database
      */
     public function readArticleByIdArticle(int $id): object
     {
-        $query = 'SELECT `art`.`id`, `art`.`title`, `art`.`text1`, `art`.`photo1`, `art`.`text2`, `art`.`photo2`, `art`.`dateCreateArticle`, `art`.`dateUpdateArticle`, `art`.`idAuthor`, `art`.`idCategory`, `art`.`phone`, `art`.`website`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `article` AS `art` INNER JOIN `user` AS `user` ON `art`.`idAuthor` = `user`.`id` WHERE `art`.`id` = :id';
+        $query = 'SELECT `art`.`id`, `art`.`title`, `art`.`text1`, `art`.`photo1`, `art`.`text2`, `art`.`photo2`, `art`.`dateCreateArticle`, `art`.`dateUpdateArticle`, `art`.`idAuthor`, `art`.`idCategory`, `art`.`phone`, `art`.`website`, `user`.`username`, `user`.`email`, `user`.`dateCreateUser` FROM `article` AS `art` LEFT JOIN `user` AS `user` ON `art`.`idAuthor` = `user`.`id` WHERE `art`.`id` = :id';
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -161,6 +161,14 @@ class Article extends Database
         $stmt->bindParam(':idDeleteArticle', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
+    public function deleteAllArticles(int $id) 
+    {
+        $query = 'DELETE FROM `article`  WHERE `idAuthor` = :idDeleteAllArticles'; 
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':idDeleteAllArticles', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
 
     /**********  CONTROL METHODS ********************/
     /**

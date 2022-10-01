@@ -280,6 +280,35 @@ a {
     border-radius: 4px;
     padding: 0.3rem;
 }
+/*************************** ARTICLE PAGE *************************************/
+
+#mainArticlePage {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+}
+.titleArticlePage {
+    margin-bottom: 6vh;
+}
+.imgArticlePageContainer {
+    display: block;
+    border: 1px solid var(--gold-color);
+}
+.imgArticlePage {
+    width: 100%;
+}
+.texArticlePageContainer {
+    font-family: 'Quicksand', sans-serif;
+    padding: 1vh 1vh 1vh 1vh ;
+}
+.btnArticlePageContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+}
+
+
 
 /************************************ FORMS ****************************************/
 /* CSS FOR GENERAL FORMS */
