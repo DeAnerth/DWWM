@@ -45,28 +45,28 @@ include_once 'includes/navbar.php';
         <div class="form-label row mb-5">
             <label id="photo1Label" for="photo1" class="form-label col-sm-3">Photo1</label>
             <div class="col-sm-9">
-                <input type="file" class="form-control" name="photo1" id="photo1" value="<?= $photo1 ?>" aria-label="première photo à téléverser" aria-describedby="photo1Label">
+                <input type="file" class="form-control" name="photo1" id="photo1"  aria-label="première photo à téléverser" aria-describedby="photo1Label">
                 <span class="text-danger"><?= $errorPhoto1 ?></span>
             </div>
         </div>
         <div class="form-label row mb-5">
             <label id="text1Label" for="text1" class="form-label col-sm-3">Descriptif 1</label>
             <div class="col-sm-9">
-                <textarea class="form-control" name="text1" id="text1" value="<?= $text1 ?>" aria-label="première description à téléverser" aria-describedby="text1Label" rows="5"></textarea>
+                <textarea class="form-control" name="text1" id="text1" aria-label="première description à téléverser" aria-describedby="text1Label" rows="5"><?= $text1 ?></textarea>
                 <span class="text-danger"><?= $errorText1 ?></span>
             </div>
         </div>
         <div class="form-label row mb-5">
             <label id="photo2Label" for="photo2" class="form-label col-sm-3">Photo2</label>
             <div class="col-sm-9">
-                <input type="file" class="form-control" name="photo2" id="photo2" value="<?= $photo2 ?>" aria-label="deuxième photo facultative à téléverser" aria-describedby="photo2Label">
+                <input type="file" class="form-control" name="photo2" id="photo2" aria-label="deuxième photo facultative à téléverser" aria-describedby="photo2Label">
                 <span class="text-success"><?= $exceptionPhoto2 ?></span>
             </div>
         </div>
         <div class="form-label row mb-5">
             <label id="text2Label" for="text2" class="form-label col-sm-3">Descriptif 2</label>
             <div class="col-sm-9">
-                <textarea class="form-control" name="text2" id="text2" value="<?= $text2 ?>" aria-label="deuxième description facultative à téléverser" aria-describedby="text2Label" rows="5"></textarea>
+                <textarea class="form-control" name="text2" id="text2"  aria-label="deuxième description facultative à téléverser" aria-describedby="text2Label" rows="5"><?= $text2 ?></textarea>
                 <span class="text-success"><?= $exceptionText2 ?></span>
             </div>
         </div>
@@ -92,7 +92,7 @@ include_once 'includes/navbar.php';
     </article>
 </form>
 <!-- </div> -->
-<div class="text-center mb-4 mt-5 ">
-    <a href=javascript:history.go(-1) class="btn btn-bkgd-black text-white-yellow-btn btn-back col-sm-2 col d-flex justify-content-end" aria-label="lien vers la page précédente"></a>
+<div class="text-center mb-4 mt-5">
+    <a href=javascript:history.go(-1) class="btn btn-back col-sm-2 categoryBtnRetour" aria-label="Lien vers la page précédente">Retour</a>
 </div>
 <?php include 'includes/footer.php' ?>

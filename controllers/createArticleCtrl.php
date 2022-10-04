@@ -1,5 +1,7 @@
 <?php
 session_start();
+session_regenerate_id(true);
+
 require_once 'models/Article.php';
 require_once 'models/Category.php';
 require_once 'config/functions.php';
@@ -38,7 +40,7 @@ if (isset($_POST['articleSubmit'])) {
     if (!empty($_POST['title'])) {
         if (strlen($_POST['title']) <= 150) {
             if (!preg_match($regex, $_POST['title'])) {
-                $errors['title'] = 'Le champ du titre ne doit comporter que des lettres minuscules/majuscules/chiffres';
+                $errors['title'] = 'Le champ du titre ne doit comporter que des lettres minuscules/majuscules/tiret';
             } else {
                 $article->title = $_POST['title'];
             }
@@ -64,7 +66,6 @@ if (isset($_POST['articleSubmit'])) {
         $imageType = exif_imagetype($_FILES['photo1']['tmp_name']);
         $image = $_FILES['photo1']['tmp_name'];
         $imageY = $_FILES['photo1'];
-        var_dump($imageY);
         // IMAGETYPE_JPEG (2) IMAGETYPE_PNG (3) IMAGETYPE_WEBP (18) IMAGETYPE_GIF (1)
         switch (true) {
             case ($imageType === 1):
@@ -80,15 +81,16 @@ if (isset($_POST['articleSubmit'])) {
                 $article->photo1 = convertImage3($imageY);
                 break;
             case (empty($image)):
-                $errors['photo2'] = 'Le champ photo doit être rempli';
+                $errors['photo1'] = 'Le champ photo doit être rempli';
+        }
+    } else {
+        $errors['photo1'] = 'Le champ photo doit être rempli';
     }
-}
 
     if ((isset($_FILES['photo2']['tmp_name'])) && (!empty($_FILES['photo2']['tmp_name']))) {
         $imageType = exif_imagetype($_FILES['photo2']['tmp_name']);
         $image = $_FILES['photo2']['tmp_name'];
         $imageX = $_FILES['photo2'];
-        var_dump($image3);
         // IMAGETYPE_JPEG (2) IMAGETYPE_PNG (3) IMAGETYPE_WEBP (18) IMAGETYPE_GIF (1)
         switch (true) {
             case ($imageType === 1):
@@ -104,14 +106,14 @@ if (isset($_POST['articleSubmit'])) {
                 $article->photo2 = convertImage3($imageX);
                 break;
             case (empty($image)):
-                $errors['photo2'] = 'Le champ photo doit être rempli';
+                $exceptions['photo2'] = 'Le champ photo2 n\'est pas obligatoire';
+        }
     }
-}
 
     if (isset($_POST['phone'])) {
         if (empty($_POST['phone'])) {
             $exceptions['phone'] = "Champs vide non obligatoire mais souhaitable";
-        } elseif (!preg_match('/^0[1-79][0-9]{8}$/', $_POST['phone'])) {
+        } elseif (!preg_match('/^0[13-79][0-9]{8}$/', $_POST['phone'])) {
             $exceptions['phone'] = "Format de numéro de téléphone incorrect";
         } else {
             $article->phone = $_POST['phone'];

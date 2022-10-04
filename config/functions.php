@@ -1,8 +1,8 @@
 <?php
 
 //*****  DEBUG  ********/
-/**    Permet un affichage de debugage 
- *     et un raccourci pour var_dump
+/**    Allows a debug display 
+ *     and a shortcut for var_dump
  */
 function debug($variable)
 {
@@ -12,9 +12,9 @@ function debug($variable)
     die;
 }
 //*****  CONTROLLER  ********/
-/**    Permet une sécurisation des données
- *     contre les injonctions SQL par trois fonctions php 
- *     spécifiquement pour la méthode $_POST
+/**    Enables data security
+ *     against SQL injunctions by three php functions 
+ *     specifically for the $_POST method
  */
 function validate($data)
 {
@@ -25,8 +25,20 @@ function validate($data)
 }
 
 //*****  IMAGES  ********/
-/**    Permet de convertir une image
- *     selon une taille spécifique 
+/**    function to save an image in a database
+ */
+function convertImage3($photo)
+{
+    $uploads_dir = 'assets/img/';
+    $tmp_name = $photo['tmp_name'];
+    $name = basename($photo['name']);
+    move_uploaded_file($tmp_name, "$uploads_dir/$name");
+    return $name;
+}
+
+/** Function under construction 
+ * Allows you to convert an image
+ * according to a specific size 
  */
 function convertImage($em)
 {
@@ -48,41 +60,12 @@ function convertImage($em)
     move_uploaded_file($tmp_name, "$uploads_dir/$name");
     imagejpeg($im_miniature, 'assets/img/' . $_FILES['photo1']['name'], 90);
 }
-function convertImage2($em)
-{
-    //https://lesdocs.fr/gestion-des-images-avec-php/
-    $img = $em;
-    $taille = getimagesize($_FILES['photo2']['tmp_name']);
-    $largeur = $taille[0];
-    $hauteur = $taille[1];
-    $largeur_miniature = 600;
-    $hauteur_miniature = $hauteur / $largeur * $largeur_miniature;
-    $im_miniature = imagecreatetruecolor(
-        $largeur_miniature,
-        $hauteur_miniature
-    );
-    imagecopyresampled($im_miniature, $img, 0, 0, 0, 0, $largeur_miniature, $hauteur_miniature, $largeur, $hauteur);
-    $uploads_dir = 'assets/img/';
-    $tmp_name = $_FILES['photo2']['tmp_name'];
-    $name = basename($_FILES['photo2']['name']);
-    move_uploaded_file($tmp_name, "$uploads_dir/$name");
-    return $name;
-}
-function convertImage3($photo)
-{
-    //https://lesdocs.fr/gestion-des-images-avec-php/
-    $uploads_dir = 'assets/img/';
-    $tmp_name = $photo['tmp_name'];
-    $name = basename($photo['name']);
-    move_uploaded_file($tmp_name, "$uploads_dir/$name");
-    return $name;
-}
 
 //*****  DATE  ********/
 
-/**    Permet de mettre en forme une date enregistrée 
- *     format d'entrée  $formatInput 
- *     format de sortie $formatOuput
+/**    Allows you to format a recorded date 
+ *     input size  $formatInput 
+ *     output size $formatOuput
  */
 
 function changeDate(string $date, string $formatInput, string $formatOutput): string
@@ -90,9 +73,9 @@ function changeDate(string $date, string $formatInput, string $formatOutput): st
     $d = DateTimeImmutable::createFromFormat($formatInput, $date);
     return $d->format($formatOutput);
 }
-/**    Permet de controller validité d'une date 
- *     d'abord vérifie si la date est valide 
- *     puis vérifie le format de la date
+/**    Allows you to check the validity of a date
+ *     first check if the date is valid
+ *     then check the date format
  */
 
 function validateDate($date, $format)
@@ -101,7 +84,7 @@ function validateDate($date, $format)
     return $d && $d->format($format) == $date;
 }
 
-//******* ESSAIS  ********/
+//******* TRYS  ********/
 // $filename = 'test.jpg';
  
 // // Définition de la largeur et de la hauteur maximale

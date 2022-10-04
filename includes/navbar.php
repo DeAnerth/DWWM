@@ -5,7 +5,17 @@
 <nav class="navbar navbar-expand-lg py-2 py-lg-5 navbar-custom bg-dark-grey menuContainer">
     <div class="container-fluid p-2">
         <!-- Icon of profilUser -->
-        <a class="navbar-brand" aria-current="page" href="<?= isset($userSession)? 'profilUserAdmin.php' : 'profilUser.php' ?>"><i class="bi bi-person-circle "></i></a>
+        <a class="navbar-brand" aria-current="page" href="<?php
+                                                            if (isset($userRole)) {
+                                                                if ($userRole) {
+                                                                    echo 'profilUserAdmin.php';
+                                                                } else {
+                                                                    echo 'profilUser.php';
+                                                                }
+                                                            } else {
+                                                                echo 'index.php';
+                                                            }
+                                                            ?>"><i class="bi bi-person-circle "></i></a>
         <!-- Icon of Burger -->
         <button class="navbar-dark navbar-toggler navbar-toggler-color" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="bi bi-list"></span>

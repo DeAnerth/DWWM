@@ -41,6 +41,19 @@ a {
     text-decoration: none;
 }
 
+ul {
+    padding: 0;
+}
+
+ul li {
+    text-decoration: none;
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
 .menuContainer {
     padding-top: 0;
     padding-bottom: 0;
@@ -96,13 +109,13 @@ a {
 /* contains red notice under the main photo of the home page */
 #containerNotification {
     display: flex;
-    color: red;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 2rem;
     margin-bottom: 5rem;
 }
 #iconNotification {
-    width: 2rem;
+    display: none;
+    color: var(--gold-color);
 }
 
 /* CONTAINERS OF RUBRICS IN INDEX.PHP LIKE BARS, RESTAURANTS, BOULANGERIES*/
@@ -133,9 +146,12 @@ a {
     background-color: var(--black-color);
     color: white;
 }
+.figureHeader {
+    width: 100%;
+}
 .titleMiddle {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     margin: 0;
 }
 .titleSmall {
@@ -146,21 +162,23 @@ a {
 }
 .imgMainRubrics {
     height: 100%;
-    width: auto;
+    width: 100%;
 }
 .figcaptionMainRubrics {
     bottom: -33%;
     left: 0;
     width: 100%;
     margin: 0;
-    padding: 30px;
+    padding: 2rem 1rem 1rem;
     color: white;
 }
 .figureMainRubricsLink {
     cursor: pointer;
 }
-.figcaptionBtn {
-    background-color: #222;
+.figcaptionBtn,
+.figcaptionBtn:active,
+.figcaptionBtn:visited {
+    background-color: var(--black-color);
     border: 2px solid var(--gold-color);
     color: var(--gold-color);
     font-family: 'Quicksand', sans-serif;
@@ -171,6 +189,10 @@ a {
     padding: 0.3rem;
 }
 
+.figcaptionBtn:hover {
+    background-color: var(--gold-color);
+    color: var(--black-color);
+}
 /* transition effects on main heading images */
 
 .transitionFigureMainRubricsToFigcaptionMainRubrics {
@@ -207,11 +229,20 @@ a {
     text-align: center;
 }
 
+.categoryBtnRetour {
+    color: var(--black-color);
+    font-weight: 600;
+}
+.categoryBtnRetour:hover {
+    background-color: var(--gold-color);
+}
+
 /* CSS FOR ARTICLE PARC IN INDEX.PHP */
 /* CAROUSEL INDEX */
 
 .sectionParcs {
     background-color: var(--gold-color);
+    padding-bottom: 3rem;
     margin-bottom: 3rem;
 }
 .carouselArrow span {
@@ -262,7 +293,7 @@ a {
     left: 0;
     width: 100%;
     margin: 0;
-    padding: 30px;
+    padding: 2rem 1rem 1rem;
     color: white;
 }
 .imgMainCategoryArticles {
@@ -285,7 +316,7 @@ a {
 #mainArticlePage {
     margin-left: auto;
     margin-right: auto;
-    width: 70vw;
+    width: 90vw;
 }
 .titleArticlePage {
     margin-bottom: 6vh;
@@ -293,22 +324,35 @@ a {
 .imgArticlePageContainer {
     display: block;
     border: 1px solid var(--gold-color);
+    margin-bottom: 2rem;
 }
 .imgArticlePage {
     width: 100%;
 }
 .texArticlePageContainer {
     font-family: 'Quicksand', sans-serif;
-    padding: 1vh 1vh 1vh 1vh ;
+    margin-bottom: 2rem ;
 }
 .btnArticlePageContainer {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-
 }
-
-
+.articlePageCommentBlock {
+    margin: 2rem 0;
+    text-align: left;
+}
+.articlePageCommentText,
+.articlePageCommentDate {
+    padding-bottom: 0.5rem;
+}
+.articlePageCommentAuthor {
+    font-style: italic;
+}
+#modalBodyDelete {
+    margin-top: 200px;
+    position: absolute;
+}
 
 /************************************ FORMS ****************************************/
 /* CSS FOR GENERAL FORMS */
@@ -362,8 +406,6 @@ a {
 /****************************** MEDIA QUERIES INDEX PAGE **************************/
 /**********************************************************************************/
 @media screen and (min-width: 767px) {
-body{
-    }
 #mainBody {
     margin: 5%;
 } 
@@ -381,12 +423,21 @@ body{
 .figureMainRubricsLink:last-child {
     margin-right: 0;
 }
+.imgMainRubrics {
+    height: 100%;
+    width: auto;
+}
+#iconNotification {
+    display: inline-block;
+    text-align: right;
+    padding-right: 1rem;
+    width: 20%;
+}
+#contentNotification {
+    width: 70%;
+}
 
 /* MEDIA QUERIES CSS FOR CAROUSEL INDEX */
-.sectionParcs {
-    padding-bottom: 3rem;
-    margin-bottom: 3rem;
-}
 .carouselExampleCaptions {
     width: 50%;
 }
@@ -401,9 +452,15 @@ body{
     width: 50%;
     margin: auto;
 }
+
+/* MEDIA QUERIES CSS FOR ARTICLES CARDS INDEX */
 .categorieArticleContainer {
     width: 50%;
 }
+#mainArticlePage {
+    width: 50vw;
+}
+
 }
 
 

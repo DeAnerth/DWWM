@@ -20,7 +20,7 @@ class User extends Database
 
     public function connexionSession(): bool
     {
-        $query = 'SELECT * FROM user WHERE username = :username';
+        $query = 'SELECT `password` FROM user WHERE username = :username';
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(":username", $this->username, PDO::PARAM_STR);
         $stmt->execute();

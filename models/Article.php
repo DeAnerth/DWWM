@@ -19,18 +19,6 @@ class Article extends Database
 
     /**********  CRUD ********************/
     /**
-     * Method to read all articles
-     * @return array
-     * @access public
-     */
-    public function readArticlesList(): array
-    {
-        $query = 'SELECT `id`, `title`, `text1`, `text2`,`dateCreateArticle`, `dateUpdateArticle`, `idAuthor`, `idCategory`, `phone`, `website` FROM `article`';
-        $queryResult = $this->pdo->query($query);
-        $commentsList = $queryResult->fetchAll(PDO::FETCH_OBJ);
-        return $commentsList;
-    }
-    /**
      * Method to create article
      * @return void
      * @access public
@@ -55,6 +43,18 @@ class Article extends Database
         $stmt->bindParam(':idAuthor', $this->idAuthor, PDO::PARAM_INT);
         $stmt->bindParam(':idCategory', $this->idCategory, PDO::PARAM_INT);
         $stmt->execute();
+    }
+    /**
+     * Method to read all articles
+     * @return array
+     * @access public
+     */
+    public function readArticlesList(): array
+    {
+        $query = 'SELECT `id`, `title`, `text1`, `text2`,`dateCreateArticle`, `dateUpdateArticle`, `idAuthor`, `idCategory`, `phone`, `website` FROM `article`';
+        $queryResult = $this->pdo->query($query);
+        $commentsList = $queryResult->fetchAll(PDO::FETCH_OBJ);
+        return $commentsList;
     }
         /**
      * Method to read one or more articles by user in the database

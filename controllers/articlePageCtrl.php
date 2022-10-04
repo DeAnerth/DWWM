@@ -17,6 +17,5 @@ if (isset($_GET['idArticle'])) {
 $article = new Article();
 
 if (isset($idArticle) && (is_numeric($idArticle)) && ($article->isIdArticleExist($idArticle))) {
-    var_dump($idArticle);
     $readArticle = $article->readArticleByIdArticle($idArticle);
 }
