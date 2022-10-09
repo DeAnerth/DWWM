@@ -13,7 +13,6 @@ include_once 'includes/navbar.php';
     <section aria-label="Informations sur le compte">
         <div class="d-flex justify-content-center">
             <div class="card align-items-center mb-5 mt-5 w-100 p-3">
-                <img src="./assets/images/patient.jpg" class="card-img-top" alt="...">
                 <div class="card-body text-center w-100 p-3">
                     <h5 class="card-title">Informations</h5>
                 </div>

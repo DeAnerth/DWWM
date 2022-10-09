@@ -55,7 +55,6 @@ if (isset($_POST['dataUpdateUser'])) {
         $errors['updateEmail'] = 'Le champ email doit être rempli';
     }
     if (empty($errors)) {
-        // $user->updateUser($_GET['id']);
         $user->updateUser($userSession);
         header("Location: profilUser.php");
     } else {

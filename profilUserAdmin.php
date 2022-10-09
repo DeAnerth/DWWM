@@ -33,11 +33,11 @@ include_once 'includes/navbar.php';
             <!-- Pagination -->
             <nav aria-label="Page navigation de la liste des utilisateurs">
                 <ul class="pagination">
-                    <li class="page-item <?= ($currentPageUsers == 1) ? "disabled" : "" ?>"><a class="page-link btn-bkgd-black" href="profilUserAdmin.php?pageUsers=<?= $currentPageUsers - 1 ?>">Previous</a></li>
+                    <li class="page-item <?= ($currentPageUsers == 1) ? "disabled" : "" ?>"><a class="page-link" href="profilUserAdmin.php?pageUsers=<?= $currentPageUsers - 1 ?>">Previous</a></li>
                     <?php for ($i = 1; $i <= $nbPageUsers; $i++) { ?>
-                        <li class="page-item <?= ($currentPageUsers == $i) ? "active" : "" ?>"><a class="page-link btn-bkgd-black" href="profilUserAdmin.php?pageUsers=<?= $i ?>"><?= $i ?></a></li>
+                        <li class="page-item <?= ($currentPageUsers == $i) ? "active" : "" ?>"><a class="page-link" href="profilUserAdmin.php?pageUsers=<?= $i ?>"><?= $i ?></a></li>
                     <?php } ?>
-                    <li class="page-item <?= ($currentPageUsers == $nbPageUsers) ? "disabled" : "" ?>"><a class="page-link btn-bkgd-black" href="profilUserAdmin.php?pageUsers=<?= $currentPageUsers + 1 ?>">Next</a></li>
+                    <li class="page-item <?= ($currentPageUsers == $nbPageUsers) ? "disabled" : "" ?>"><a class="page-link" href="profilUserAdmin.php?pageUsers=<?= $currentPageUsers + 1 ?>">Next</a></li>
                 </ul>
             </nav>
             </section>

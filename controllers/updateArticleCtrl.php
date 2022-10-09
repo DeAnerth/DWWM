@@ -94,7 +94,7 @@ if (isset($_POST['updateArticleSubmit'])) {
                 $article->photo1 = convertImage3($imageY);
                 break;
             case (empty($image)):
-                $errors['updatePhoto1'] = 'Le champ photo doit être rempli';
+                $errors['updatePhoto1'] = 'Le champ photo doit être rempli avec des images JPEG, JPG, PNG, WEBP ou GIF uniquement';
         }
     } else {
         $errors['updatePhoto1'] = 'Le champ photo doit être rempli';
@@ -119,14 +119,14 @@ if (isset($_POST['updateArticleSubmit'])) {
                 $article->photo2 = convertImage3($imageX);
                 break;
             case (empty($image)):
-                $exceptions['updatePhoto2'] = 'Le champ photo2 n\'est pas obligatoire';
+                $exceptions['updatePhoto2'] = 'Le champ photo2 n\'est pas obligatoire mais doit être rempli avec des images JPEG, JPG, PNG, WEBP ou GIF uniquement';
         }
     }
 
     if (isset($_POST['updatePhone'])) {
         if (empty($_POST['updatePhone'])) {
             $exceptions['updatePhone'] = "Champs vide non obligatoire mais souhaitable";
-        } elseif (!preg_match('/^0[13-79][0-9]{8}$/', $_POST['updatePhone'])) {
+        } elseif (!preg_match('/^0[1-79][0-9]{8}$/', $_POST['updatePhone'])) {
             $exceptions['updatePhone'] = "Format de numéro de téléphone incorrect";
         } else {
             $article->phone = $_POST['updatePhone'];
@@ -146,8 +146,6 @@ if (isset($_POST['updateArticleSubmit'])) {
         $article->dateUpdateArticle = date('Y-m-d');
         $article->updateArticle($updateArticle);
         $article->readArticleByIdArticle($idUpdateArticle);
-
-        header("Location: articlePage.php");
 
     }
 }

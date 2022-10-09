@@ -58,7 +58,7 @@ if (isset($_POST['registrationUserSubmit'])) {
 
     if (empty($errorsRegistration)) {
             $user->dateCreateUser = date('Y-m-d');
-            $user->role = htmlspecialchars(0);
+            $user->role = 0;
             $user->createUser();
             $success = true;
             header("Location: index.php");

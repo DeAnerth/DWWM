@@ -67,7 +67,7 @@ include_once 'includes/navbar.php';
                     <h2 class="titleMiddle">Boulangeries</h2>
                 </header>
                 <div class="figureImgContainer">
-                    <img class="imgMainRubrics" src="./assets/img/boulangerie_au_chant_du_coq_02.jpg" alt="Photo d'une boulangerie à Versailles">
+                    <img class="imgMainRubrics" src="./assets/img/boulangerie_au_chant_du_coq_03.jpg" alt="Photo d'une boulangerie à Versailles">
                 </div>
                 <figcaption class="figcaptionMainRubrics">
                     <p>Boulangeries.</p>
@@ -112,8 +112,8 @@ include_once 'includes/navbar.php';
             <div class="carousel-item carouselItem">
                 <img src="assets/img/parc_balbi_02.jpg" class="d-block w-75 sliderImg" alt="Photo du parc à Versailles">
                 <div class="carousel-caption carouselCaptionContainer d-none d-md-block">
-                    <h5 class="titleSmall carouselTitle">Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
+                    <h5 class="titleSmall carouselTitle">Parc Balbi</h5>
+                    <p>12 rue du Maréchal Joffre, 78000 VERSAILLES</p>
                 </div>
             </div>
         </div>

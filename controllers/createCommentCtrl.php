@@ -24,7 +24,8 @@ if (isset($_POST['createCommentSubmit'])) {
         $comment->text1 = $_POST['comment1'];
     } elseif ($userSession == NULL) {
         $errors['comment1'] = 'Il faut vous connecter pour laisser un commentaire';
-    } else {
+    }
+    else {
         $errors['comment1'] = 'Le champ du commentaire doit être rempli';
     }
     if (empty($errors)) {

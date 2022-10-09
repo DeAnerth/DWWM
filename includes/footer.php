@@ -4,8 +4,8 @@
   <div class="container p-3 pb-0 w-100">
     <!-- Section: Links -->
     <section class="mb-2 text-center ">
-    <a class="btn btn-floating text-white-yellow-links m-1" href="#!" role="button">MENTIONS LEGALES</a>
-    <a class="btn btn-floating text-white-yellow-links m-1" href="#!" role="button">TRAITEMENT DES DONNEES ET GESTION DES COOKIES</a>
+    <a class="btn btn-floating text-white-yellow-links m-1" href="https://www.cnil.fr/fr/mentions-legales" target="_blank" role="button">MENTIONS LEGALES</a>
+    <a class="btn btn-floating text-white-yellow-links m-1" href="https://www.cnil.fr/fr/definition/traitement-de-donnees-personnelles" target="_blank" role="button">TRAITEMENT DES DONNEES ET GESTION DES COOKIES</a>
     </section>
     <!-- Section: Links -->
 

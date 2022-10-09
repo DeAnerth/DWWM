@@ -42,9 +42,11 @@ include_once 'includes/navbar.php';
                 <div class="websiteArticlePageContainer mb-3 mt-3">
                     <a href="<?= isset($readArticle->website) ? $readArticle->website : '' ?>" target="_blanck" class="btn btn-bkgd-black text-white-yellow-btn col-md-12">Site internet</a>
                 </div>
+                <?php if (isset($userSession)) { ?>
                 <div class="mb-3 mt-3">
                     <a href="articlePage.php?idArticle=<?= $readArticle->id ?>&value=createComment" id="createCommentBtn" class="card-link btn btn-bkgd-black text-white-yellow-btn col-md-12" name="createComment">Laisser un commentaire</a>
                 </div>
+                <?php } ?>
             </div>
         </article>
         <article>
@@ -65,7 +67,7 @@ include_once 'includes/navbar.php';
                     </form>
                 </div>
             </div>
-        </article>
+        </article> 
         <article>
             <div class="text-center mb-4">
                 <h3>Commentaires</h3>
@@ -73,12 +75,12 @@ include_once 'includes/navbar.php';
                     <ul class="articlePageCommentBlock">
                         <li class="articlePageCommentText"><?= $commentByArticle->text1 ?></li>
                         <li class="articlePageCommentDate"><?= $commentByArticle->dateCreateComment ?></li>
-                        <li class="articlePageCommentAuthor"><?= $commentByArticle->idAuthor ?></li>
                     </ul>
                     </ul>
                 <?php } ?>
             </div>
         </article>
+        <?php if ((isset($userSession)) && ($userSession == $idAuthor)) { ?>
         <article>
             <div class="text-center mb-4">
                 <div>
@@ -156,6 +158,7 @@ include_once 'includes/navbar.php';
                 <span class="text-danger"><?= $errorDeleteArticle ?></span>
             </div>
         </article>
+        <?php } ?>
     </section>
 </main>
 <div class="text-center mb-4 mt-5">
